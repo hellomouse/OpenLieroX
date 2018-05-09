@@ -1,3 +1,0 @@
-/home/kosti/Desktop/OpenLieroX/CMakeFiles/rebuild_cache.dir
-/home/kosti/Desktop/OpenLieroX/CMakeFiles/openlierox.dir
-/home/kosti/Desktop/OpenLieroX/CMakeFiles/edit_cache.dir
