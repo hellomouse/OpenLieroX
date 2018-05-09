@@ -1,6 +1,6 @@
 ////////////////////////////////////////
 //
-//             OpenLieroX
+//			 OpenLieroX
 //
 // code under LGPL, based on JasonBs work,
 // enhanced by Dark Charlie and Albert Zeyer
@@ -56,7 +56,7 @@ bool CClient::shouldDoProjectileSimulation() {
 void CClient::Simulation()
 {
 	short i;
-    CWorm *w;
+	CWorm *w;
 
 	// Don't simulate if the physics engine is not ready
 	if (!PhysicsEngine::Get()->isInitialised())  {
@@ -87,9 +87,9 @@ void CClient::Simulation()
 		}
 	}
 
-    // We stop a few seconds after the actual game over
-    if(bGameOver && (tLX->currentTime - fGameOverTime).seconds() > GAMEOVER_WAIT)
-        return;
+	// We stop a few seconds after the actual game over
+	if(bGameOver && (tLX->currentTime - fGameOverTime).seconds() > GAMEOVER_WAIT)
+		return;
 
 
 	// TODO: does it work also, if we
@@ -113,7 +113,7 @@ void CClient::Simulation()
 
 			if(bGameOver)
 				// TODO: why continue and not break?
-                continue;
+				continue;
 
 
 			// Check if this worm picked up a bonus
@@ -142,9 +142,9 @@ void CClient::Simulation()
 			}
 		}
 
-        if(bGameOver)
+		if(bGameOver)
 			// TODO: why continue and not break?
-            continue;
+			continue;
 
 
 		// TODO: move this to physics as it should also be FPS independent
@@ -224,12 +224,12 @@ void CClient::NewNet_Simulation() // Simulates one frame, delta time always set 
 		return;
 	}
 
-    // We stop a few seconds after the actual game over
-    if(bGameOver && (tLX->currentTime - fGameOverTime).seconds() > GAMEOVER_WAIT)
-        return;
+	// We stop a few seconds after the actual game over
+	if(bGameOver && (tLX->currentTime - fGameOverTime).seconds() > GAMEOVER_WAIT)
+		return;
 
 
-    CWorm *w;
+	CWorm *w;
 	// Player simulation
 	w = cRemoteWorms;
 	for(int i = 0; i < MAX_WORMS; i++, w++) {
@@ -279,7 +279,7 @@ void CClient::Explosion(CVec pos, float damage, int shake, int owner)
 	int		x,y,px;
 	ushort i;
 	Color	Colour = cMap->GetTheme()->iDefaultColour;
-    bool    gotDirt = false;
+	bool	gotDirt = false;
 
 	// Go through until we find dirt to throw around
 	y = MIN((uint)pos.y,cMap->GetHeight()-1);
@@ -294,7 +294,7 @@ void CClient::Explosion(CVec pos, float damage, int shake, int owner)
 
 		if(cMap->GetPixelFlag(x,y) & PX_DIRT) {
 			Colour = Color(cMap->GetImage()->format, GetPixel(cMap->GetImage().get(),x,y));
-            gotDirt = true;
+			gotDirt = true;
 			break;
 		}
 	}
@@ -318,26 +318,26 @@ void CClient::Explosion(CVec pos, float damage, int shake, int owner)
 	}
 
 
-    // Go through projectiles. If any were next to an explosion, set the projectile's explode event to true
+	// Go through projectiles. If any were next to an explosion, set the projectile's explode event to true
 	/*  CProjectile *prj = cProjectiles;
-    for( i=0; i<MAX_PROJECTILES; i++, prj++ ) {
-        if( !prj->isUsed() )
-            continue;
+	for( i=0; i<MAX_PROJECTILES; i++, prj++ ) {
+		if( !prj->isUsed() )
+			continue;
 
-        if( fabs(prj->GetPosition().x - pos.x) > 15 )
-            continue;
-        if( fabs(prj->GetPosition().y - pos.y) > 15 )
-            continue;
+		if( fabs(prj->GetPosition().x - pos.x) > 15 )
+			continue;
+		if( fabs(prj->GetPosition().y - pos.y) > 15 )
+			continue;
 
-        prj->setExplode( tLX->currentTime + CalculateDistance(prj->GetPosition(),pos) / 500.0f, true);
-    }*/
+		prj->setExplode( tLX->currentTime + CalculateDistance(prj->GetPosition(),pos) / 500.0f, true);
+	}*/
 
 
 	// Particles
-    if(gotDirt) {
-	    for(x=0;x<2;x++)
-		    SpawnEntity(ENT_PARTICLE,0,pos,CVec(GetRandomNum()*30,GetRandomNum()*10),Colour,NULL);
-    }
+	if(gotDirt) {
+		for(x=0;x<2;x++)
+			SpawnEntity(ENT_PARTICLE,0,pos,CVec(GetRandomNum()*30,GetRandomNum()*10),Colour,NULL);
+	}
 
 
 	int expsize = 8;
@@ -349,14 +349,14 @@ void CClient::Explosion(CVec pos, float damage, int shake, int owner)
 
 	int d = cMap->CarveHole((int)damage,pos, getGameLobby()->features[FT_InfiniteMap]);
 
-    // Increment the dirt count
+	// Increment the dirt count
 	if(owner >= 0 && owner < MAX_WORMS)
 		cRemoteWorms[owner].incrementDirtCount( d );
 
 	// If this is within a viewport, shake the viewport
 	for(i=0; i<NUM_VIEWPORTS; i++) {
 		if(!cViewports[i].getUsed())
-            continue;
+			continue;
 
 		if(shake) {
 			if(cViewports[i].inView(pos))
@@ -485,16 +485,16 @@ void CClient::InjureWorm(CWorm *w, float damage, int owner)
 				w->setAlive(false);
 				w->Kill();
 				if( !NewNet::Active() )
-	        	    w->clearInput();
+					w->clearInput();
 
 				cNetEngine->SendDeath(w->getID(), owner); // Let the server know that i am dead
-        	    
-        	    if( tLX->iGameType == GME_HOST && cServer && NewNet::Active() && NewNet::CanUpdateGameState() )
-        	    	cServer->killWorm(w->getID(), owner);
+				
+				if( tLX->iGameType == GME_HOST && cServer && NewNet::Active() && NewNet::CanUpdateGameState() )
+					cServer->killWorm(w->getID(), owner);
 
-        	   	if( NewNet::Active() )
-        	   	{
-        	   		// TODO: merge this part of code with cClient::ParseWormDown()?
+			   	if( NewNet::Active() )
+			   	{
+			   		// TODO: merge this part of code with cClient::ParseWormDown()?
 					// Make a death sound
 					int s = GetRandomInt(2);
 					if( NewNet::CanPlaySound(w->getID()) )
@@ -512,7 +512,7 @@ void CClient::InjureWorm(CWorm *w, float damage, int owner)
 						SpawnEntity(ENT_BLOOD,0,w->getPos(),CVec(GetRandomNum()*sp,GetRandomNum()*sp),Color(200,0,0),NULL);
 						SpawnEntity(ENT_BLOOD,0,w->getPos(),CVec(GetRandomNum()*sp,GetRandomNum()*sp),Color(128,0,0),NULL);
 					}
-        	   	}
+			   	}
 			}
 		}
 	}
@@ -805,8 +805,8 @@ void CClient::SpawnProjectile(CVec pos, CVec vel, int rot, int owner, proj_t *_p
 		return;
 	}
 
-    // Safety
-    _random %= 255;
+	// Safety
+	_random %= 255;
 
 	proj->Spawn(_proj,pos,vel,rot,owner,_random,remotetime, ignoreWormCollBeforeTime);
 }
@@ -1355,11 +1355,11 @@ void CClient::processChatter()
 	if (tLX->iGameType == GME_LOCAL)
 		return;
 
-    keyboard_t *kb = GetKeyboard();
+	keyboard_t *kb = GetKeyboard();
 
 	// Process taunt keys
 	for(short i=0; i<kb->queueLength; i++) {
-    	const KeyboardEvent& input = kb->keyQueue[i];
+		const KeyboardEvent& input = kb->keyQueue[i];
 
 		if( input.down && input.state.bCtrl && taunts->getTauntForKey( input.sym ) != "" ) {
 			sChat_Text += taunts->getTauntForKey( input.sym );
@@ -1385,8 +1385,8 @@ void CClient::processChatter()
 			fChat_BlinkTime = 0;
 		}
 
-        // Go through the keyboard queue
-        for(short i=0; i<kb->queueLength; i++) {
+		// Go through the keyboard queue
+		for(short i=0; i<kb->queueLength; i++) {
 
 			if(kb->keyQueue[i].down && kb->keyQueue[i].sym == SDLK_ESCAPE) {
 				// Stop typing
@@ -1406,11 +1406,11 @@ void CClient::processChatter()
 			}
 
 			bChat_CursorVisible = true;
-            processChatCharacter(kb->keyQueue[i]);
-        }
+			processChatCharacter(kb->keyQueue[i]);
+		}
 
-        return;
-    }
+		return;
+	}
 
 
 	// Check if we have hit the chat key and we're in a network game
@@ -1438,17 +1438,17 @@ void CClient::processChatter()
 		return;
 	}
 
-    // Start typing on any keypress, if we can
+	// Start typing on any keypress, if we can
 	if (!tLXOptions->bAutoTyping)
 		return;
 
 	bTeamChat = false;
 
-    for(short i=0; i<kb->queueLength; i++) {
-    	const KeyboardEvent& input = kb->keyQueue[i];
+	for(short i=0; i<kb->queueLength; i++) {
+		const KeyboardEvent& input = kb->keyQueue[i];
 
-        // Was it an up keypress?
-        if(!input.down) continue;
+		// Was it an up keypress?
+		if(!input.down) continue;
 
 		if (!bChat_Typing)  {
 
@@ -1502,8 +1502,8 @@ void CClient::processChatter()
 
 		}
 
-        processChatCharacter(input);
-    }
+		processChatCharacter(input);
+	}
 }
 
 
@@ -1523,37 +1523,37 @@ std::string CClient::getChatterCommand() {
 void CClient::processChatCharacter(const KeyboardEvent& input)
 {
 
-    // Up?
-    if(!input.down) {
-        bChat_Holding = false;
-        return;
-    }
+	// Up?
+	if(!input.down) {
+		bChat_Holding = false;
+		return;
+	}
 
-    // Must be down
+	// Must be down
 
-    if(bChat_Holding) {
-        if(iChat_Lastchar != input.ch)
-            bChat_Holding = false;
-        else {
-            if((tLX->currentTime - fChat_TimePushed).seconds() < 0.4f)
-                return;
-        }
-    }
+	if(bChat_Holding) {
+		if(iChat_Lastchar != input.ch)
+			bChat_Holding = false;
+		else {
+			if((tLX->currentTime - fChat_TimePushed).seconds() < 0.4f)
+				return;
+		}
+	}
 
-    if(!bChat_Holding) {
-        bChat_Holding = true;
-        fChat_TimePushed = tLX->currentTime;
-    }
+	if(!bChat_Holding) {
+		bChat_Holding = true;
+		fChat_TimePushed = tLX->currentTime;
+	}
 
-    iChat_Lastchar = input.ch;
+	iChat_Lastchar = input.ch;
 
-    // Backspace
-    if(input.sym == SDLK_BACKSPACE) {
+	// Backspace
+	if(input.sym == SDLK_BACKSPACE) {
 		if(iChat_Pos > 0)  {
 			Utf8Erase(sChat_Text, --iChat_Pos, 1);
 		}
-        return;
-    }
+		return;
+	}
 
 	// Delete
 	if (input.sym == SDLK_DELETE)  {
@@ -1591,15 +1591,15 @@ void CClient::processChatCharacter(const KeyboardEvent& input)
 		return;
 	}
 
-    // Enter
-    if(input.ch == '\r') {
-        bChat_Typing = false;
+	// Enter
+	if(input.ch == '\r') {
+		bChat_Typing = false;
 		clearHumanWormInputs();
 
 		if(iNumWorms > 0 && cLocalWorms[0]->getType() != PRF_COMPUTER)
 			cNetEngine->SendAFK( cLocalWorms[0]->getID(), AFK_BACK_ONLINE );
 
-        // Send chat message to the server
+		// Send chat message to the server
 		if(sChat_Text != "") {
 			if( bTeamChat )	// No "/me" macro in teamchat - server won't recognize such command
 				cNetEngine->SendText("/teamchat \"" + sChat_Text + "\"", cLocalWorms[0]->getName() );
@@ -1607,8 +1607,8 @@ void CClient::processChatCharacter(const KeyboardEvent& input)
 				cNetEngine->SendText(sChat_Text, cLocalWorms[0]->getName() );
 		}
 		sChat_Text = "";
-        return;
-    }
+		return;
+	}
 
 	// Paste
 	if (input.ch == 22 ||
@@ -1642,18 +1642,18 @@ void CClient::processChatCharacter(const KeyboardEvent& input)
 		// handle the key like a normal key
 	}
 
-    // Normal key
-    if(tLX->cFont.CanDisplayCharacter(input.ch) ) {
-    	InsertUnicodeChar(sChat_Text, iChat_Pos, input.ch);
+	// Normal key
+	if(tLX->cFont.CanDisplayCharacter(input.ch) ) {
+		InsertUnicodeChar(sChat_Text, iChat_Pos, input.ch);
 		iChat_Pos++;
-    }
+	}
 }
 
 ///////////////////
 // Find a nearest spot to the current one
 CVec CClient::FindNearestSpot(CWorm *w)
 {
-    int     x, y;
+	int	 x, y;
 
 	// Are we in the map?
 	bool bInMap = true;
@@ -1681,12 +1681,12 @@ CVec CClient::FindNearestSpot(CWorm *w)
 
 	// If it isn't, look in the nearest cells
 
-    // Calculate our current cell
-	int     px, py;
-    uint     gw = cMap->getGridWidth();
-    uint     gh = cMap->getGridHeight();
+	// Calculate our current cell
+	int	 px, py;
+	uint	 gw = cMap->getGridWidth();
+	uint	 gh = cMap->getGridHeight();
 
-    px = (int) fabs((w->getPos().x)/gw);
+	px = (int) fabs((w->getPos().x)/gw);
 	py = (int) fabs((w->getPos().y)/gh);
 
 	if (bInMap)  {
@@ -1711,12 +1711,12 @@ CVec CClient::FindNearestSpot(CWorm *w)
 	}
 
 
-    // Just find some spot
-    bool    first = true;
-    int     cols = cMap->getGridCols()-1;       // Note: -1 because the grid is slightly larger than the
-    int     rows = cMap->getGridRows()-1;       // level size
+	// Just find some spot
+	bool	first = true;
+	int	 cols = cMap->getGridCols()-1;	   // Note: -1 because the grid is slightly larger than the
+	int	 rows = cMap->getGridRows()-1;	   // level size
 
-    // Set our current cell as default
+	// Set our current cell as default
 	if (bInMap)  {
 		px = (uint) fabs((w->getPos().x)/gw);
 		py = (uint) fabs((w->getPos().y)/gh);
@@ -1726,38 +1726,38 @@ CVec CClient::FindNearestSpot(CWorm *w)
 		py = 0;
 	}
 
-    x = px; y = py;
+	x = px; y = py;
 
-    // Start from the cell and go through until we get to an empty cell
-    uchar pf;
-    while(true) {
-        while(true) {
-            // If we're on the original starting cell, and it's not the first move we have checked all cells
-            // and should leave
-            if(!first) {
-                if(px == x && py == y) {
-                    return CVec((float)x*gw+gw/2, (float)y*gh+gh/2);
-                }
-	            first = false;
-            }
+	// Start from the cell and go through until we get to an empty cell
+	uchar pf;
+	while(true) {
+		while(true) {
+			// If we're on the original starting cell, and it's not the first move we have checked all cells
+			// and should leave
+			if(!first) {
+				if(px == x && py == y) {
+					return CVec((float)x*gw+gw/2, (float)y*gh+gh/2);
+				}
+				first = false;
+			}
 
-            pf = *(cMap->getGridFlags() + y*cMap->getGridCols() + x);
-            if(!(pf & PX_ROCK))
-                return CVec((float)x*gw+gw/2, (float)y*gh+gh/2);
+			pf = *(cMap->getGridFlags() + y*cMap->getGridCols() + x);
+			if(!(pf & PX_ROCK))
+				return CVec((float)x*gw+gw/2, (float)y*gh+gh/2);
 
-            if(++x >= cols) {
-                x=0;
-                break;
-            }
-        }
+			if(++x >= cols) {
+				x=0;
+				break;
+			}
+		}
 
-        if(++y >= rows) {
-            y=0;
-            x=0;
-        }
-    }
+		if(++y >= rows) {
+			y=0;
+			x=0;
+		}
+	}
 
-    // Can't get here
-    return CVec((float)x, (float)y);
+	// Can't get here
+	return CVec((float)x, (float)y);
 
 }

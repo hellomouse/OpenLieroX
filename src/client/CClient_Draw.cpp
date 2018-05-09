@@ -1,6 +1,6 @@
 /////////////////////////////////////////
 //
-//             OpenLieroX
+//			 OpenLieroX
 //
 // code under LGPL, based on JasonBs work,
 // enhanced by Dark Charlie and Albert Zeyer
@@ -882,7 +882,7 @@ void CClient::DrawViewport(SDL_Surface * bmpDest, int viewport_index)
 	if (viewport_index >= NUM_VIEWPORTS)
 		return;
 
-    CViewport *v = &cViewports[viewport_index];
+	CViewport *v = &cViewports[viewport_index];
 	if (!v->getUsed())
 		return;
 
@@ -966,7 +966,7 @@ void CClient::DrawViewport(SDL_Surface * bmpDest, int viewport_index)
 	if ( !( bShouldRepaintInfo || tLX->bVideoModeChanged ) )
 		return;
 
-    CWorm *worm = v->getTarget();	
+	CWorm *worm = v->getTarget();	
 	
 	// TODO: allow more viewports
 	if (viewport_index == 0)  {  // Viewport 1
@@ -1016,8 +1016,8 @@ void CClient::DrawViewport(SDL_Surface * bmpDest, int viewport_index)
 	}
 
 	// The following is only drawn for viewports with a worm target
-    if( v->getType() > VW_CYCLE )
-        return;
+	if( v->getType() > VW_CYCLE )
+		return;
 
 
 	// Draw the details only when current settings is not displayed
@@ -1130,8 +1130,8 @@ void CClient::DrawViewport(SDL_Surface * bmpDest, int viewport_index)
 		break;
 
 
-    case GMT_DIRT: {
-		    // Dirt count
+	case GMT_DIRT: {
+			// Dirt count
 			int count = worm->getDirtCount();
 			spec_msg = "Dirt count: ";
 
@@ -1198,12 +1198,12 @@ DeprecatedGUI::CGuiLayout ViewportMgr;
 // Simulate the hud
 void CClient::SimulateHud()
 {
-    if(bDedicated)
-        return;
+	if(bDedicated)
+		return;
 
 	//float dt = tLX->fDeltaTime; // TODO: not used
 	//float ScrollSpeed=5; // TODO: not used
-    bool  con = Con_IsVisible();
+	bool  con = Con_IsVisible();
 
 
 	//
@@ -1218,16 +1218,16 @@ void CClient::SimulateHud()
 	// Game Menu
 	if( ( WasKeyboardEventHappening(SDLK_ESCAPE, false) || DeprecatedGUI::CChatWidget::GlobalEnabled()) && 
 			!bChat_Typing && !con && !DeprecatedGUI::tMenu->bMenuRunning) {
-        if( !bViewportMgr )
-        {
+		if( !bViewportMgr )
+		{
 			if (!bGameMenu)
 				InitializeGameMenu();
 		}
 		else  {
 			ViewportMgr.Shutdown();
-            bViewportMgr = false;
+			bViewportMgr = false;
 		}
-    }
+	}
 
 	// Top bar toggle
 	if (cToggleTopBar.isDownOnce() && !bChat_Typing)  {
@@ -1670,7 +1670,7 @@ void CClient::UpdateScore(DeprecatedGUI::CListview *Left, DeprecatedGUI::CListvi
 	break; // NORMAL
 
 
-    // Dirt game scoreboard
+	// Dirt game scoreboard
 	case GMT_DIRT: {
 
 		// Draw the players
@@ -1953,7 +1953,7 @@ void CClient::DrawRemoteChat(SDL_Surface * bmpDest)
 		lv->AddChatBoxLine(l.strLine, l.iColour, l.iTextType);
 	}
 
-    // If there are too many lines, remove the top one
+	// If there are too many lines, remove the top one
 	/*
 	if (lv->getItems())
 		while(lv->getItemCount() > 256) {
@@ -2032,11 +2032,11 @@ void CClient::DrawRemoteChat(SDL_Surface * bmpDest)
 
 
 enum {
-    v1_On,
-    v1_Type,
-    v2_On,
-    v2_Type,
-    v_ok,
+	v1_On,
+	v1_Type,
+	v2_On,
+	v2_Type,
+	v_ok,
 	v1_Target,
 	v2_Target
 };
@@ -2045,71 +2045,71 @@ enum {
 // Initialize the viewport manager
 void CClient::InitializeViewportManager()
 {
-    int x = 320-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2;
-    int y = 200-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->h/2;
-    int x2 = x+DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2+40;
+	int x = 320-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2;
+	int y = 200-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->h/2;
+	int x2 = x+DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2+40;
 
 
-    bViewportMgr = true;
+	bViewportMgr = true;
 
-    // Initialize the gui
-    ViewportMgr.Initialize();
+	// Initialize the gui
+	ViewportMgr.Initialize();
 
-    bool v2On = true;
-    // If there is only 1 player total, turn the second viewport off
-    short count = 0;
+	bool v2On = true;
+	// If there is only 1 player total, turn the second viewport off
+	short count = 0;
 	short i;
-    for(i=0; i<MAX_WORMS; i++ ) {
-        if(cRemoteWorms[i].isUsed())
-            count++;
-    }
+	for(i=0; i<MAX_WORMS; i++ ) {
+		if(cRemoteWorms[i].isUsed())
+			count++;
+	}
 
-    if( count <= 1 )
-        v2On = false;
+	if( count <= 1 )
+		v2On = false;
 
 	DeprecatedGUI::CCombobox *v1Target = new DeprecatedGUI::CCombobox();
 	DeprecatedGUI::CCombobox *v2Target = new DeprecatedGUI::CCombobox();
 
-    // Viewport 1
-    ViewportMgr.Add( new DeprecatedGUI::CLabel("Used",tLX->clNormalLabel), -1,     x+15,  y+80,  0,   0);
-    ViewportMgr.Add( new DeprecatedGUI::CLabel("Type",tLX->clNormalLabel), -1,     x+15,  y+110,  0,   0);
-    //ViewportMgr.Add( new CCheckbox(true),       v1_On,  x+75,  y+80,  20,  20);
-	ViewportMgr.Add( v1Target,           v1_Target,x+75,    y+135, 150, 17);
-    ViewportMgr.Add( new DeprecatedGUI::CCombobox(),           v1_Type,x+75,  y+110, 150, 17);
-    ViewportMgr.Add( new DeprecatedGUI::CCheckbox(v2On),       v2_On,  x2,    y+80,  20,  20);
-	ViewportMgr.Add( v2Target,           v2_Target,x2,    y+135, 150, 17);
-    ViewportMgr.Add( new DeprecatedGUI::CCombobox(),           v2_Type,x2,    y+110, 150, 17);
-    ViewportMgr.Add( new DeprecatedGUI::CButton(DeprecatedGUI::BUT_OK, DeprecatedGUI::tMenu->bmpButtons),    v_ok,310,y+DeprecatedGUI::gfxGame.bmpViewportMgr.get()->h-25,30,15);
+	// Viewport 1
+	ViewportMgr.Add( new DeprecatedGUI::CLabel("Used",tLX->clNormalLabel), -1,	 x+15,  y+80,  0,   0);
+	ViewportMgr.Add( new DeprecatedGUI::CLabel("Type",tLX->clNormalLabel), -1,	 x+15,  y+110,  0,   0);
+	//ViewportMgr.Add( new CCheckbox(true),	   v1_On,  x+75,  y+80,  20,  20);
+	ViewportMgr.Add( v1Target,		   v1_Target,x+75,	y+135, 150, 17);
+	ViewportMgr.Add( new DeprecatedGUI::CCombobox(),		   v1_Type,x+75,  y+110, 150, 17);
+	ViewportMgr.Add( new DeprecatedGUI::CCheckbox(v2On),	   v2_On,  x2,	y+80,  20,  20);
+	ViewportMgr.Add( v2Target,		   v2_Target,x2,	y+135, 150, 17);
+	ViewportMgr.Add( new DeprecatedGUI::CCombobox(),		   v2_Type,x2,	y+110, 150, 17);
+	ViewportMgr.Add( new DeprecatedGUI::CButton(DeprecatedGUI::BUT_OK, DeprecatedGUI::tMenu->bmpButtons),	v_ok,310,y+DeprecatedGUI::gfxGame.bmpViewportMgr.get()->h-25,30,15);
 
-    // Fill in the combo boxes
+	// Fill in the combo boxes
 
-    // If the first player is a human, and is still playing: Only show the follow option
-    ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Follow", VW_FOLLOW );
-    if( cLocalWorms[0]->getLives() == WRM_OUT || cLocalWorms[0]->getType() == PRF_COMPUTER ) {
-        ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Cycle", VW_CYCLE);
-        ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Free Look", VW_FREELOOK);
-        ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Action Cam", VW_ACTIONCAM);
-    }
+	// If the first player is a human, and is still playing: Only show the follow option
+	ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Follow", VW_FOLLOW );
+	if( cLocalWorms[0]->getLives() == WRM_OUT || cLocalWorms[0]->getType() == PRF_COMPUTER ) {
+		ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Cycle", VW_CYCLE);
+		ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Free Look", VW_FREELOOK);
+		ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBS_ADDITEM, "Action Cam", VW_ACTIONCAM);
+	}
 
-    // If the second player is a human and is still playing: Only show the follow option
-    bool show = true;
-    if( iNumWorms > 1 )
-        if( cLocalWorms[1]->getLives() != WRM_OUT && cLocalWorms[1]->getType() == PRF_HUMAN )
-            show = false;
+	// If the second player is a human and is still playing: Only show the follow option
+	bool show = true;
+	if( iNumWorms > 1 )
+		if( cLocalWorms[1]->getLives() != WRM_OUT && cLocalWorms[1]->getType() == PRF_HUMAN )
+			show = false;
 
-    ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Follow", VW_FOLLOW );
-    if( show ) {
-        ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Cycle", VW_CYCLE);
-        ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Free Look",VW_FREELOOK);
-        ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Action Cam",VW_ACTIONCAM);
-    }
+	ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Follow", VW_FOLLOW );
+	if( show ) {
+		ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Cycle", VW_CYCLE);
+		ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Free Look",VW_FREELOOK);
+		ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBS_ADDITEM, "Action Cam",VW_ACTIONCAM);
+	}
 
 	// Get the targets
 	int v1trg = 0, v2trg = 0;
 	CWorm *trg = cViewports[0].getTarget();
 	if (trg)  {
 		v1trg = trg->getID();
-    }
+	}
 
 	if (cViewports[1].getUsed())  {
 		trg = cViewports[1].getTarget();
@@ -2118,9 +2118,9 @@ void CClient::InitializeViewportManager()
 	}
 
 	// Fill in the target worms boxes
-    for(i=0; i<MAX_WORMS; i++ ) {
-        if(!cRemoteWorms[i].isUsed() || cRemoteWorms[i].getLives() == WRM_OUT)
-            continue;
+	for(i=0; i<MAX_WORMS; i++ ) {
+		if(!cRemoteWorms[i].isUsed() || cRemoteWorms[i].getLives() == WRM_OUT)
+			continue;
 
 		v1Target->addItem(cRemoteWorms[i].getName(), cRemoteWorms[i].getName(), cRemoteWorms[i].getPicimg(), cRemoteWorms[i].getID());
 		v2Target->addItem(cRemoteWorms[i].getName(), cRemoteWorms[i].getName(), cRemoteWorms[i].getPicimg(), cRemoteWorms[i].getID());
@@ -2130,17 +2130,17 @@ void CClient::InitializeViewportManager()
 
 		if (cRemoteWorms[i].getID() == v2trg)
 			v2Target->setCurItem(v2Target->getLastItem());
-    }
+	}
 
-    // Restore old settings
-    ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBM_SETCURINDEX, cViewports[0].getType(), 0);
-    ViewportMgr.SendMessage( v2_On, DeprecatedGUI::CKM_SETCHECK, cViewports[1].getUsed(), 0);
-    if( cViewports[1].getUsed() )
-        ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBM_SETCURINDEX, cViewports[1].getType(), 0);
+	// Restore old settings
+	ViewportMgr.SendMessage( v1_Type, DeprecatedGUI::CBM_SETCURINDEX, cViewports[0].getType(), 0);
+	ViewportMgr.SendMessage( v2_On, DeprecatedGUI::CKM_SETCHECK, cViewports[1].getUsed(), 0);
+	if( cViewports[1].getUsed() )
+		ViewportMgr.SendMessage( v2_Type, DeprecatedGUI::CBM_SETCURINDEX, cViewports[1].getType(), 0);
 
 
-    // Draw the background into the menu buffer
-    DrawImage(DeprecatedGUI::tMenu->bmpBuffer.get(),DeprecatedGUI::gfxGame.bmpViewportMgr,x,y);
+	// Draw the background into the menu buffer
+	DrawImage(DeprecatedGUI::tMenu->bmpBuffer.get(),DeprecatedGUI::gfxGame.bmpViewportMgr,x,y);
 }
 
 
@@ -2148,8 +2148,8 @@ void CClient::InitializeViewportManager()
 // Draw the viewport manager
 void CClient::DrawViewportManager(SDL_Surface * bmpDest)
 {
-    int x = 320-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2;
-    int y = 200-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->h/2;
+	int x = 320-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2;
+	int y = 200-DeprecatedGUI::gfxGame.bmpViewportMgr.get()->h/2;
 
 	SetGameCursor(CURSOR_ARROW);
 	mouse_t *Mouse = GetMouse();
@@ -2157,73 +2157,73 @@ void CClient::DrawViewportManager(SDL_Surface * bmpDest)
 	// Draw the back image
 	DrawImage(bmpDest,DeprecatedGUI::gfxGame.bmpViewportMgr,x,y);
 
-    tLX->cFont.Draw(bmpDest, x+75,y+50, tLX->clNormalLabel,"Viewport 1");
-    tLX->cFont.Draw(bmpDest, x+DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2+40,y+50, tLX->clNormalLabel,"Viewport 2");
+	tLX->cFont.Draw(bmpDest, x+75,y+50, tLX->clNormalLabel,"Viewport 1");
+	tLX->cFont.Draw(bmpDest, x+DeprecatedGUI::gfxGame.bmpViewportMgr.get()->w/2+40,y+50, tLX->clNormalLabel,"Viewport 2");
 
-    ViewportMgr.Draw(bmpDest);
-    DeprecatedGUI::gui_event_t *ev = ViewportMgr.Process();
+	ViewportMgr.Draw(bmpDest);
+	DeprecatedGUI::gui_event_t *ev = ViewportMgr.Process();
 
-    if( ViewportMgr.getWidget(v_ok)->InBox(Mouse->X,Mouse->Y) )
-        SetGameCursor(CURSOR_HAND);
+	if( ViewportMgr.getWidget(v_ok)->InBox(Mouse->X,Mouse->Y) )
+		SetGameCursor(CURSOR_HAND);
 
-    // Draw the mouse
-    DrawCursor(bmpDest);
+	// Draw the mouse
+	DrawCursor(bmpDest);
 
-    if(!ev)
-        return;
+	if(!ev)
+		return;
 
 
-    // Get the worm count
-    short Wormcount = 0;
-    for(short i=0; i<MAX_WORMS; i++ ) {
-        if(cRemoteWorms[i].isUsed())
-            Wormcount++;
-    }
+	// Get the worm count
+	short Wormcount = 0;
+	for(short i=0; i<MAX_WORMS; i++ ) {
+		if(cRemoteWorms[i].isUsed())
+			Wormcount++;
+	}
 
-    switch(ev->iControlID) {
+	switch(ev->iControlID) {
 
-        // V2 On
-        case v2_On:
-            if(ev->iEventMsg == DeprecatedGUI::CHK_CHANGED) {
-                // If there is only one worm, disable the 2nd viewport
-                if( Wormcount <= 1 )
-                    ViewportMgr.SendMessage(v2_On, DeprecatedGUI::CKM_SETCHECK,(DWORD)0,0);
-            }
-            break;
+		// V2 On
+		case v2_On:
+			if(ev->iEventMsg == DeprecatedGUI::CHK_CHANGED) {
+				// If there is only one worm, disable the 2nd viewport
+				if( Wormcount <= 1 )
+					ViewportMgr.SendMessage(v2_On, DeprecatedGUI::CKM_SETCHECK,(DWORD)0,0);
+			}
+			break;
 
-        // OK
-        case v_ok:
-            if(ev->iEventMsg == DeprecatedGUI::BTN_CLICKED) {
+		// OK
+		case v_ok:
+			if(ev->iEventMsg == DeprecatedGUI::BTN_CLICKED) {
 
-                // If there is only one worm, disable the 2nd viewport
-                if( Wormcount <= 1 )
-                    ViewportMgr.SendMessage(v2_On, DeprecatedGUI::CKM_SETCHECK,(DWORD)0,0);
+				// If there is only one worm, disable the 2nd viewport
+				if( Wormcount <= 1 )
+					ViewportMgr.SendMessage(v2_On, DeprecatedGUI::CKM_SETCHECK,(DWORD)0,0);
 
 				DeprecatedGUI::CCombobox *v1Target = (DeprecatedGUI::CCombobox *)ViewportMgr.getWidget(v1_Target);
 				DeprecatedGUI::CCombobox *v2Target = (DeprecatedGUI::CCombobox *)ViewportMgr.getWidget(v2_Target);
 
-                // Grab settings
-                int a_type = ViewportMgr.SendMessage(v1_Type, DeprecatedGUI::CBM_GETCURINDEX, (DWORD)0,0);
-                int b_on = ViewportMgr.SendMessage(v2_On, DeprecatedGUI::CKM_GETCHECK, (DWORD)0,0);
-                int b_type = ViewportMgr.SendMessage(v2_Type, DeprecatedGUI::CBM_GETCURINDEX, (DWORD)0,0);
+				// Grab settings
+				int a_type = ViewportMgr.SendMessage(v1_Type, DeprecatedGUI::CBM_GETCURINDEX, (DWORD)0,0);
+				int b_on = ViewportMgr.SendMessage(v2_On, DeprecatedGUI::CKM_GETCHECK, (DWORD)0,0);
+				int b_type = ViewportMgr.SendMessage(v2_Type, DeprecatedGUI::CBM_GETCURINDEX, (DWORD)0,0);
 				if (!v1Target->getSelectedItem() || !v2Target->getSelectedItem())
 					return;
 
 				int v1_target = v1Target->getSelectedItem()->iTag;
 				int v2_target = v2Target->getSelectedItem()->iTag;
 
-                for( int i=0; i<NUM_VIEWPORTS; i++ ) {
-                    cViewports[i].setUsed(false);
+				for( int i=0; i<NUM_VIEWPORTS; i++ ) {
+					cViewports[i].setUsed(false);
 					cViewports[i].setTarget(NULL);
-                    cViewports[i].reset();
-                }
+					cViewports[i].reset();
+				}
 
-                // Re-setup the viewports
-                if( !b_on) {
-                    SetupViewports(&cRemoteWorms[v1_target], NULL, a_type, VW_FOLLOW);
-                } else {
-                    SetupViewports(&cRemoteWorms[v1_target], &cRemoteWorms[v2_target], a_type, b_type);
-                }
+				// Re-setup the viewports
+				if( !b_on) {
+					SetupViewports(&cRemoteWorms[v1_target], NULL, a_type, VW_FOLLOW);
+				} else {
+					SetupViewports(&cRemoteWorms[v1_target], &cRemoteWorms[v2_target], a_type, b_type);
+				}
 
 				// Set the worms to follow
 				CWorm *trg_v1 = &cRemoteWorms[v1_target];
@@ -2236,14 +2236,14 @@ void CClient::DrawViewportManager(SDL_Surface * bmpDest)
 					if (trg_v2->isUsed() && trg_v2->getAlive())
 						cViewports[1].setTarget(trg_v2);
 
-                // Shutdown & leave
-                ViewportMgr.Shutdown();
-                bViewportMgr = false;
+				// Shutdown & leave
+				ViewportMgr.Shutdown();
+				bViewportMgr = false;
 				SetGameCursor(CURSOR_NONE);
-                return;
-            }
-            break;
-    }
+				return;
+			}
+			break;
+	}
 }
 
 void CClient::InitializeSpectatorViewportKeys()
@@ -2287,13 +2287,13 @@ void CClient::ProcessSpectatorViewportKeys()
 	CWorm * v2_targetPtr = cViewports[1].getTarget();
 	int v1_target = -1, v2_target = -1, v1_prev = -1, v2_prev = -1, v1_next = -1, v2_next = -1, fallbackWorm = -1;
 
-    for(int i=0; i<MAX_WORMS; i++ )
+	for(int i=0; i<MAX_WORMS; i++ )
 	{
 		if( cRemoteWorms[i].isUsed() && fallbackWorm == -1 )
 			fallbackWorm = i;
 		if( cRemoteWorms[i].isUsed() && cRemoteWorms[i].getAlive() )
 			fallbackWorm = i;
-        if( ! cRemoteWorms[i].isUsed() || cRemoteWorms[i].getLives() == WRM_OUT )
+		if( ! cRemoteWorms[i].isUsed() || cRemoteWorms[i].getLives() == WRM_OUT )
 			continue;
 		if( v1_target != -1 && v1_next == -1 )
 				v1_next = i;
@@ -2307,7 +2307,7 @@ void CClient::ProcessSpectatorViewportKeys()
 			v1_prev = i;
 		if( v2_target == -1 )
 			v2_prev = i;
-    }
+	}
 
 	if( v1_target == -1 )
 		v1_target = v1_prev;
@@ -2498,11 +2498,11 @@ void CClient::UpdateIngameScore(DeprecatedGUI::CListview *Left, DeprecatedGUI::C
 	Right->Clear();
 
 	// Fill the listviews
-    for(int i=0; i < iScorePlayers; i++) {
+	for(int i=0; i < iScorePlayers; i++) {
 		if (i >= 16)  // Left listview overflowed, fill in the right one
 			lv = Right;
 
-        CWorm *p = &cRemoteWorms[iScoreboard[i]];
+		CWorm *p = &cRemoteWorms[iScoreboard[i]];
 
 		// Get colour
 		if (tLXOptions->bColorizeNicks && tGameInfo.iGeneralGameType == GMT_TEAMS)
@@ -2510,7 +2510,7 @@ void CClient::UpdateIngameScore(DeprecatedGUI::CListview *Left, DeprecatedGUI::C
 		else
 			iColor = tLX->clNormalLabel;
 
-        // Add the player and if this player is local & human, highlight it
+		// Add the player and if this player is local & human, highlight it
 		lv->AddItem(p->getName(), i, tLX->clNormalLabel);
 		if (p->getLocal() && (p->getType() != PRF_COMPUTER || tLX->iGameType == GME_JOIN))  {
 			DeprecatedGUI::lv_item_t *it = lv->getItem(i);
@@ -2521,7 +2521,7 @@ void CClient::UpdateIngameScore(DeprecatedGUI::CListview *Left, DeprecatedGUI::C
 		// ID
 		lv->AddSubitem(DeprecatedGUI::LVS_TEXT, itoa(p->getID()), (DynDrawIntf*)NULL, NULL);
 
-        // Skin
+		// Skin
 		lv->AddSubitem(DeprecatedGUI::LVS_IMAGE, "", p->getPicimg(), NULL, DeprecatedGUI::VALIGN_TOP);
 
 		// Name
@@ -2555,7 +2555,7 @@ void CClient::UpdateIngameScore(DeprecatedGUI::CListview *Left, DeprecatedGUI::C
 			if (remoteClient && p->getID())
 				lv->AddSubitem(DeprecatedGUI::LVS_TEXT, itoa(remoteClient->getPing()), (DynDrawIntf*)NULL, NULL);
 		}
-    }
+	}
 
 	bUpdateScore = false;
 	fLastScoreUpdate = tLX->currentTime;
@@ -2640,20 +2640,21 @@ void CClient::DrawPlayerWaiting(SDL_Surface * bmpDest)
 // Draw the scoreboard
 void CClient::DrawScoreboard(SDL_Surface * bmpDest)
 {
-    bool bShowScore = false;
-    bool bShowReady = false;
+	bool bShowScore = false;
+	bool bShowReady = false;
 
-    // Do checks on whether or not to show the scoreboard
-    if(Con_IsVisible())
-        return;
-    if(cShowScore.isDown() && !bChat_Typing)
-        bShowScore = true;
-    if(iNetStatus == NET_CONNECTED && bGameReady && tLX->iGameType != GME_LOCAL) {
-        bShowScore = true;
-        bShowReady = true;
-    }
-    if(!bShowScore)
-        return;
+	// Do checks on whether or not to show the scoreboard
+	if(Con_IsVisible())
+		return;
+	if(cShowScore.isDown() && !bChat_Typing)
+		bShowScore = true;
+	if(iNetStatus == NET_CONNECTED && bGameReady && tLX->iGameType != GME_LOCAL) {
+		bShowScore = true;
+		bShowReady = true;
+	}
+
+	if(!bShowScore)
+		return;
 
 	// Background
 	DrawImageAdv(bmpDest, bmpIngameScoreBg, 0, tLXOptions->bTopBarVisible ? getTopBarBottom() : 0, 0,
@@ -2676,8 +2677,8 @@ void CClient::DrawCurrentSettings(SDL_Surface * bmpDest)
 	bool bOldCurrentSettings = bCurrentSettings;
 	bCurrentSettings = true;
 
-    // Do checks on whether or not to show
-    if(iNetStatus != NET_CONNECTED && !cShowSettings.isDown() && !bGameOver)
+	// Do checks on whether or not to show
+	if(iNetStatus != NET_CONNECTED && !cShowSettings.isDown() && !bGameOver)
 		bCurrentSettings = false;
 
 	if (bGameOver && bGameMenu)
@@ -2691,8 +2692,8 @@ void CClient::DrawCurrentSettings(SDL_Surface * bmpDest)
 	if (!bCurrentSettings)
 		return;
 
-    int y = tInterfaceSettings.CurrentSettingsY;
-    int x = tInterfaceSettings.CurrentSettingsX;
+	int y = tInterfaceSettings.CurrentSettingsY;
+	int x = tInterfaceSettings.CurrentSettingsX;
 	if (cViewports[1].getUsed())  {
 		x = tInterfaceSettings.CurrentSettingsTwoPlayersX;
 		y = tInterfaceSettings.CurrentSettingsTwoPlayersY;

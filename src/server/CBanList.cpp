@@ -1,12 +1,12 @@
 /////////////////////////////////////////
 //
-//             OpenLieroX
+//			 OpenLieroX
 //
-//        Ban List class
+//		Ban List class
 //
-//        created 9/8/06
-//        by Dark Charlie and Albert Zeyer
-//        Code under LGPL
+//		created 9/8/06
+//		by Dark Charlie and Albert Zeyer
+//		Code under LGPL
 //
 /////////////////////////////////////////
 
@@ -22,9 +22,9 @@
 // BanList Constructor
 CBanList::CBanList()
 {
-    m_psBanList = NULL;
-    m_psSortedList = NULL;
-    m_nCount = 0;
+	m_psBanList = NULL;
+	m_psSortedList = NULL;
+	m_nCount = 0;
 	m_szPath = "cfg/ban.lst";
 	m_bLoading = false;
 }
@@ -44,15 +44,15 @@ banlist_t *CBanList::findBanned(const std::string& szAddress)
 	}
 	TrimSpaces( addr );
 
-    banlist_t *psWorm = m_psBanList;
+	banlist_t *psWorm = m_psBanList;
 
-    for(; psWorm; psWorm=psWorm->psNext) {
-        if( stringcasecmp(psWorm->szAddress, addr) == 0 )
-            return psWorm;
-    }
+	for(; psWorm; psWorm=psWorm->psNext) {
+		if( stringcasecmp(psWorm->szAddress, addr) == 0 )
+			return psWorm;
+	}
 
-    // No match
-    return NULL;
+	// No match
+	return NULL;
 }
 
 ///////////////////
@@ -69,16 +69,16 @@ int CBanList::getIdByAddr(const std::string& szAddress)
 		addr.erase(pos);
 	}
 	TrimSpaces( addr );
-    
-    banlist_t *psWorm = m_psBanList;
+	
+	banlist_t *psWorm = m_psBanList;
 
-    for(int i=0; psWorm; psWorm=psWorm->psNext,i++) {
-        if( stringcasecmp(psWorm->szAddress, addr) == 0 )
-            return i;
-    }
+	for(int i=0; psWorm; psWorm=psWorm->psNext,i++) {
+		if( stringcasecmp(psWorm->szAddress, addr) == 0 )
+			return i;
+	}
 
-    // No match
-    return -1;
+	// No match
+	return -1;
 }
 
 
@@ -93,20 +93,20 @@ void CBanList::addBanned(const std::string& szAddress, const std::string& szNick
 		addr.erase(p);
 	}
 
-    banlist_t *psWorm = new banlist_t;
+	banlist_t *psWorm = new banlist_t;
 
-    if( !psWorm )
-        return;
+	if( !psWorm )
+		return;
 
-    psWorm->szNick = szNick;
-    psWorm->szAddress = addr;
-    
-    // Link it in
-    psWorm->psNext = m_psBanList;
-    m_psBanList = psWorm;
+	psWorm->szNick = szNick;
+	psWorm->szAddress = addr;
+	
+	// Link it in
+	psWorm->psNext = m_psBanList;
+	m_psBanList = psWorm;
 
-    // Sort the list
-    sortList();
+	// Sort the list
+	sortList();
 
 	if (!m_bLoading)
 		saveList(m_szPath);
@@ -123,7 +123,7 @@ void CBanList::removeBanned(const std::string& szAddress)
 		addr.erase(pos);
 	}
 
-    banlist_t *psWorm = findBanned(szAddress);
+	banlist_t *psWorm = findBanned(szAddress);
 	if (!psWorm)
 		return;
 	int ID = getIdByAddr(szAddress);
@@ -155,8 +155,8 @@ void CBanList::removeBanned(const std::string& szAddress)
 
 	m_nCount--;  // update the number of items
 
-    // Sort the list
-    sortList();
+	// Sort the list
+	sortList();
 
 	// Save the list
 	saveList(m_szPath);
@@ -167,12 +167,12 @@ void CBanList::removeBanned(const std::string& szAddress)
 // Save the ban list
 void CBanList::saveList(const std::string& szFilename)
 {
-    // Save it as plain text
-    FILE *fp = OpenGameFile(szFilename, "wt");
-    if( !fp )
-        return;
+	// Save it as plain text
+	FILE *fp = OpenGameFile(szFilename, "wt");
+	if( !fp )
+		return;
 
-    banlist_t *psWorm = m_psBanList;
+	banlist_t *psWorm = m_psBanList;
 	if (!psWorm)
 		fputs("",fp);
 	else {
@@ -182,7 +182,7 @@ void CBanList::saveList(const std::string& szFilename)
 		}
 	}  // else
 
-    fclose(fp);
+	fclose(fp);
 }
 
 
@@ -191,26 +191,26 @@ void CBanList::saveList(const std::string& szFilename)
 void CBanList::loadList(const std::string& szFilename)
 {
 	m_bLoading = true;
-    // Shutdown the list first
-    Shutdown();
+	// Shutdown the list first
+	Shutdown();
 
-    FILE *fp = OpenGameFile(szFilename, "rt");
-    if( !fp )
-        return;
+	FILE *fp = OpenGameFile(szFilename, "rt");
+	if( !fp )
+		return;
 
 	std::string line;
 	
-    while( !feof(fp) ) {
-        line = ReadUntil(fp, '\n');
+	while( !feof(fp) ) {
+		line = ReadUntil(fp, '\n');
 		std::vector<std::string> exploded = explode(line,",");
 		if (exploded.size() >= 2)
 			addBanned(exploded[0],exploded[1]);
-    }
+	}
 
-    fclose(fp);
+	fclose(fp);
 
-    // Sort the list
-    sortList();
+	// Sort the list
+	sortList();
 
 	m_bLoading = false;
 }
@@ -229,13 +229,13 @@ bool CBanList::isBanned(const std::string& szAddress)
 	if(szAddress.find("127.0.0.1") != std::string::npos)
 		return false;
 
-    banlist_t *psWorm = findBanned(szAddress);
+	banlist_t *psWorm = findBanned(szAddress);
 
-    // If we can't find the worm, it's not banned
-    if( !psWorm )
-        return false;
-    
-    return true;
+	// If we can't find the worm, it's not banned
+	if( !psWorm )
+		return false;
+	
+	return true;
 }
 
 
@@ -245,7 +245,7 @@ bool CBanList::isBanned(const std::string& szAddress)
 banlist_t *CBanList::getList()
 {
 	sortList();
-    return m_psSortedList;
+	return m_psSortedList;
 }
 
 
@@ -253,53 +253,53 @@ banlist_t *CBanList::getList()
 // Return the number of banned IPs
 int CBanList::getNumItems()
 {
-    return m_nCount;
+	return m_nCount;
 }
 
 
 ///////////////////
 // Create a sorted list
 void CBanList::sortList() {
-    int i, j;
+	int i, j;
 
-    // Free any previous list
-    if( m_psSortedList )
-        delete[] m_psSortedList;
+	// Free any previous list
+	if( m_psSortedList )
+		delete[] m_psSortedList;
 
-    // Count the number of banned worms
-    m_nCount = 0;
-    banlist_t *psWorm = m_psBanList;
-    for(; psWorm; psWorm=psWorm->psNext)  {
-        m_nCount++;
+	// Count the number of banned worms
+	m_nCount = 0;
+	banlist_t *psWorm = m_psBanList;
+	for(; psWorm; psWorm=psWorm->psNext)  {
+		m_nCount++;
 	}
 
-    // Allocate the sorted list
-    m_psSortedList = new banlist_t[m_nCount];
-    if( !m_psSortedList )
-        return;
+	// Allocate the sorted list
+	m_psSortedList = new banlist_t[m_nCount];
+	if( !m_psSortedList )
+		return;
 
-    // Fill in the links
-    psWorm = m_psBanList;
-    for( i=0; i<m_nCount; i++, psWorm=psWorm->psNext)
-        m_psSortedList[i].psLink = psWorm;
-    
-    if( m_nCount < 2 )
-        return;
+	// Fill in the links
+	psWorm = m_psBanList;
+	for( i=0; i<m_nCount; i++, psWorm=psWorm->psNext)
+		m_psSortedList[i].psLink = psWorm;
+	
+	if( m_nCount < 2 )
+		return;
 
-    // Sort the list using a simple bubble sort
-    banlist_t temp;
+	// Sort the list using a simple bubble sort
+	banlist_t temp;
    	for(i=0; i<m_nCount; i++) {
 		for(j=0; j<m_nCount-1-i; j++) {
 
-            if( m_psSortedList[j].psLink->szNick.compare( m_psSortedList[j+1].psLink->szNick) > 0 ) {
+			if( m_psSortedList[j].psLink->szNick.compare( m_psSortedList[j+1].psLink->szNick) > 0 ) {
 
-                // Swap the 2 items
-                temp = m_psSortedList[j];
-                m_psSortedList[j] = m_psSortedList[j+1];
-                m_psSortedList[j+1] = temp;
-            }
-        }
-    }
+				// Swap the 2 items
+				temp = m_psSortedList[j];
+				m_psSortedList[j] = m_psSortedList[j+1];
+				m_psSortedList[j+1] = temp;
+			}
+		}
+	}
 }
 
 ///////////////////
@@ -311,14 +311,14 @@ std::string CBanList::getPath() {
 ///////////////////
 // Get the specified item
 banlist_t *CBanList::getItemById(int ID) {
-    if (ID > m_nCount || ID < 0)
+	if (ID > m_nCount || ID < 0)
 		return NULL;
 	banlist_t *psWorm = m_psBanList;
 
 	if(!psWorm)
 		return NULL;
 
-    for(int i=0; psWorm; psWorm=psWorm->psNext,i++)  {
+	for(int i=0; psWorm; psWorm=psWorm->psNext,i++)  {
 		if (ID == i) 
 		  return psWorm;
 	}
@@ -330,19 +330,19 @@ banlist_t *CBanList::getItemById(int ID) {
 // Shutdown the ban list
 void CBanList::Shutdown()
 {
-     banlist_t *psWorm = m_psBanList;
-     banlist_t *psNext = NULL;
+	 banlist_t *psWorm = m_psBanList;
+	 banlist_t *psNext = NULL;
 
-     for(; psWorm; psWorm=psNext) {
-         psNext = psWorm->psNext;
+	 for(; psWorm; psWorm=psNext) {
+		 psNext = psWorm->psNext;
 
-         delete psWorm;
-     }
+		 delete psWorm;
+	 }
 
-     m_psBanList = NULL;
+	 m_psBanList = NULL;
 
-    // Free any sorted list
-    if( m_psSortedList )
-        delete[] m_psSortedList;
-    m_psSortedList = NULL;
+	// Free any sorted list
+	if( m_psSortedList )
+		delete[] m_psSortedList;
+	m_psSortedList = NULL;
 }

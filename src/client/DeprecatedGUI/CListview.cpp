@@ -103,7 +103,7 @@ void CListview::Draw(SDL_Surface * bmpDest)
 	int texty = 0;
 
 	{
-		SDL_Rect clipRect = {iX+4, y, iWidth-8, iHeight - (y-iY)};
+		SDL_Rect clipRect = {(short)(iX+4), (short)y, (unsigned short)(iWidth-8), (unsigned short)(iHeight - (y-iY))};
 		ScopedSurfaceClip clip(bmpDest, clipRect);
 		
 		// Draw the items

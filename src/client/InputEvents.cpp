@@ -34,7 +34,7 @@ static mouse_t		Mouse;
 static SDL_Event	sdl_event;
 static ModifiersState evtModifiersState;
 
-static bool         nFocus = true;
+static bool		 nFocus = true;
 bool		bActivated = false;
 bool		bDeactivated = false;
 
@@ -198,8 +198,8 @@ void HandleCInputs_UpdateUpForNonKeyboard() {
 static void ResetCurrentEventStorage() {
 	ResetCInputs();
 
-    // Clear the queue
-    Keyboard.queueLength = 0;
+	// Clear the queue
+	Keyboard.queueLength = 0;
 
 	// Reset mouse wheel
 	Mouse.WheelScrollUp = false;
@@ -471,12 +471,12 @@ static void HandleMouseState() {
 	return;*/
 #endif
 
-    for( int i=0; i<MAX_MOUSEBUTTONS; i++ ) {
+	for( int i=0; i<MAX_MOUSEBUTTONS; i++ ) {
 		if(!(Mouse.Button & SDL_BUTTON(i)) && Mouse.Down & SDL_BUTTON(i))
 			Mouse.Up |= SDL_BUTTON(i);
-        if( !(Mouse.Down & SDL_BUTTON(i)) && (Mouse.Button & SDL_BUTTON(i)) )
-            Mouse.FirstDown |= SDL_BUTTON(i);
-    }
+		if( !(Mouse.Down & SDL_BUTTON(i)) && (Mouse.Button & SDL_BUTTON(i)) )
+			Mouse.FirstDown |= SDL_BUTTON(i);
+	}
 
 	Mouse.Down = Mouse.Button;
 }
@@ -578,9 +578,9 @@ bool ProcessEvents()
 		return ret;
 	}
 
-    // If we don't have focus, don't update as often
-    if(!nFocus)
-        SDL_Delay(14);
+	// If we don't have focus, don't update as often
+	if(!nFocus)
+		SDL_Delay(14);
 
 	HandleMouseState();
 	HandleKeyboardState();

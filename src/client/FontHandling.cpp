@@ -1,6 +1,6 @@
 /////////////////////////////////////////
 //
-//             OpenLieroX
+//			 OpenLieroX
 //
 // code under LGPL, based on JasonBs work,
 // enhanced by Dark Charlie and Albert Zeyer
@@ -222,7 +222,7 @@ void DrawGameText(SDL_Surface *bmpDest, const std::string& text, const CFontStyl
 // Draw a text onto a surface
 void DrawGameText(SDL_Surface *bmpDest, int x, int y, const std::string& text)
 {
-	SDL_Rect r = { x, y, 9999, 9999 };
+	SDL_Rect r = { (short)x, (short)y, 9999, 9999 };
 	DrawGameText(bmpDest, text, CFontStyle(), CTextProperties(&r));
 }
 
