@@ -1,0 +1,25 @@
+#!/usr/bin/python -u
+# The Python presets are detected from non-Python ones by first line which shouild contain "python" string
+# This file contains default settings for all presets, 
+# it will be executed before any preset to clean up after previous preset
+
+# TODO: use options.cfg settings as default and don't hardcode any other stuff here
+
+global controlHandler
+controlHandler = controlHandlerDefault
+cmds.adminCommandHelp_Preset = None
+cmds.parseAdminCommand_Preset = None
+cmds.userCommandHelp_Preset = None
+cmds.parseUserCommand_Preset = None
+
+
+setvar("GameOptions.GameInfo.GameType", 0) # 0 - Deathmatch, 1 - TDM, 2 - Tag, 3 - Demolitions, 4 - Hide&Seek
+
+setvar("GameOptions.GameInfo.Lives", cfg.GAME_LIVES)
+
+setvar("GameOptions.GameInfo.KillLimit", cfg.GAME_MAX_KILLS)
+
+setvar("GameOptions.GameInfo.TimeLimit", cfg.GAME_MAX_TIME)
+
+setvar( "GameOptions.GameInfo.FillWithBotsTo", cfg.FILL_WITH_BOTS_TO )
+

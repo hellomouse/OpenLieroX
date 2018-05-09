@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="OpenLieroX" />
+		<Option makefile="../../Makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="Game Files/;Game Core/;Deprecated GUI/;New GUI/;Game Files/Game modes/;" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../distrib/win32/OpenLieroX" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add option="-O2" />
+					<Add option="-O1" />
+					<Add option="-O" />
+					<Add directory="../../libs/hawknl/src" />
+					<Add directory="../../libs/boost_process" />
+				</Compiler>
+				<Linker>
+					<Add library="wsock32" />
+					<Add library="ws2_32" />
+					<Add library="../DevCpp/libs/bgd.lib" />
+					<Add library="../DevCpp/libs/HawkNL.lib" />
+					<Add library="../DevCpp/libs/libxml2.lib" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../distrib/win32/OpenLieroX" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../libs/hawknl/src" />
+					<Add directory="../../libs/boost_process" />
+				</Compiler>
+				<Linker>
+					<Add library="wsock32" />
+					<Add library="ws2_32" />
+					<Add library="../DevCpp/libs/bgd.lib" />
+					<Add library="../DevCpp/libs/HawkNL.lib" />
+					<Add library="../DevCpp/libs/libxml2.lib" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+			<Target title="Release - Linux">
+				<Option output="../../distrib/tmpbuild/OpenLieroX" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O3" />
+					<Add option="-O2" />
+					<Add option="-O1" />
+					<Add option="-O" />
+					<Add directory="../../libs/hawknl/src" />
+					<Add directory="../../libs/boost_process" />
+				</Compiler>
+			</Target>
+			<Target title="Debug - Linux">
+				<Option output="../../distrib/tmpbuild/OpenLieroX" prefix_auto="1" extension_auto="1" />
+				<Option object_output="objs" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../libs/hawknl/src" />
+					<Add directory="../../libs/boost_process" />
+					<Add directory="/usr/include/SDL" />
+					<Add directory="/usr/include/libxml2" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DUSE_RWOPS" />
+			<Add directory="../../libs/boost_process" />
+			<Add directory="../../libs/coredumper/src" />
+			<Add directory="../../libs/hawknl/include" />
+			<Add directory="../../libs/hawknl/src" />
+			<Add directory="../../libs/libzip" />
+			<Add directory="../../libs/pstreams" />
+			<Add directory="../../include" />
+		</Compiler>
+		<Linker>
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+			<Add library="SDL_mixer" />
+			<Add library="SDL_image" />
+			<Add library="z" />
+			<Add library="xml2" />
+			<Add library="gd" />
+			<Add library="lib/libNL.a" />
+			<Add library="zip" />
+		</Linker>
+		<Unit filename="../../include/Autocompletion.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/AuxLib.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CBanList.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CBonus.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CBytestream.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CChannel.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CChatBox.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CClient.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CFont.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CGameMode.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CGameScript.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CGameSkin.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CHideAndSeek.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CInput.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CMap.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CNinjaRope.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CProjectile.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CScriptableVars.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CServer.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CShootList.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CVec.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CViewport.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CWeather.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CWorm.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CWormBot.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CWormHuman.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/CWpnRest.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/Cache.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/ChatCommand.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Clipboard.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Color.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Command.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/ConfigHandler.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/ConversationLogger.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CrashHandler.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/CssParser.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Cursor.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/DedicatedControl.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CAnimation.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CBar.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CBox.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CBrowser.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CButton.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CChatWidget.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CCheckbox.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CCombobox.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CGuiLayout.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CGuiSkin.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CGuiSkinnedLayout.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CImage.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CInputBox.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CLabel.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CLine.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CListview.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CMenu.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CProgressbar.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CScrollbar.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CSlider.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CTextButton.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CTextbox.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CTitleButton.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CWidget.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/CWidgetList.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/Graphics.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DeprecatedGUI/Menu.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/DynDraw.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Entity.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/Error.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/EventQueue.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/FeatureList.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/FileDownload.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/FindFile.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/FontHandling.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Frame.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/Geometry.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/GfxPrimitives.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Graphics.h">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../include/GuiPrimitives.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/HTTP.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/IRC.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/IniReader.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/InputEvents.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/InternDataClass.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/IpToCountryDB.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/LieroX.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/MapLoader.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/MathLib.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Music.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Mutex.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Networking.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/NewNetEngine.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/NotifyUser.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Options.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Physics.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/PhysicsLX56.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/PixelFunctors.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/PreInitVar.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Process.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/ProfileSystem.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/ProjAction.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/Protocol.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/RandomNumberList.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/ReadWriteLock.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/SafeVector.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CAnimation.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CBackground.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CBar.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CBorder.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CBox.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CBrowser.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CButton.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CCheckbox.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CCombobox.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CDialog.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CGuiSkin.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CGuiSkinnedLayout.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CImage.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CImageButton.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CInputBox.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CItem.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CLabel.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CLine.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CListview.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CMapEditor.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CMarquee.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CMenu.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CMinimap.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CProgressbar.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CScrollbar.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CSlider.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CTabControl.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CTextButton.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CTextbox.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CTitleButton.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CToggleButton.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CWidget.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CWidgetEffect.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SkinnedGUI/CommonDialogs.h">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../include/SmartPointer.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Sounds.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/StaticAssert.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/StringUtils.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/ThreadVar.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Timer.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/UCString.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Unicode.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/UploadSpeedTest.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Utils.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/Version.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/WeaponDesc.h">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../include/XMLutils.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/con_cmd.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/console.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/sex.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../include/types.h">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/AuxLib.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/CChatBox.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CClient.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CClient_Draw.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CClient_Game.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CClient_Parse.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CClient_Send.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CFont.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/CGameSkin.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CInput.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/CNinjaRope.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CViewport.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/CWeather.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/Cache.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/Clipboard.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/ConversationLogger.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/CrashHandler.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/Cursor.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CAnimation.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CBar.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CBox.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CBrowser.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CButton.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CChatWidget.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CCheckbox.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CCombobox.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CGuiLayout.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CGuiSkin.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CGuiSkinnedLayout.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CImage.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CInputBox.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CListview.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CMenu.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CScrollbar.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CSlider.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CTextButton.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CTextbox.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CTitleButton.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CWidget.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/CWidgetList.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Graphics.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/MenuSystem.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_FloatingOptions.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Local.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Main.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Mapeditor.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Chat.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Favourites.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Host.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Internet.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Join.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Lan.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_Main.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Net_News.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Options.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_Player.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DeprecatedGUI/Menu_SpeedTest.cpp">
+			<Option virtualFolder="Deprecated GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/DynDraw.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/Entity.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/client/Error.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/FontHandling.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/GfxPrimitives.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/GuiPrimitives.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/IRC.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/InputEvents.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/Music.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/NotifyUser.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/OpenExternBrowser.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/Options.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/ProfileSystem.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CAnimation.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CBackground.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CBorder.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CButton.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CCheckbox.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CCombobox.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CDialog.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CGuiSkin.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CGuiSkinnedLayout.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CImage.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CImageButton.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CInputBox.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CItem.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CLabel.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CLine.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CListview.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CMapEditor.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CMarquee.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CMenu.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CMinimap.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CProgressbar.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CScrollbar.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CSlider.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CTabControl.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CTextbox.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CToggleButton.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CWidget.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/SkinnedGUI/CommonDialogs.cpp">
+			<Option virtualFolder="New GUI/" />
+		</Unit>
+		<Unit filename="../../src/client/Sounds.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/CBonus.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CBytestream.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/CChannel.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/CGameScript.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CMap.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CProjectile.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CScriptableVars.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/CShootList.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CWorm.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CWorm_AI.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CWorm_SendRecv.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CWorm_Simulate.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/CWpnRest.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/Command.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/ConfigHandler.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Console.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/CssParser.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Debug.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/EventQueue.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/FeatureList.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/FileDownload.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/FindFile.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/FlagInfo.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Geometry.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/HTTP.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/IniReader.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/IpToCountryDB.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/MapLoader.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/MathLib.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Misc.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Networking.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/NewNetEngine.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Physics.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/PhysicsLX56.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/PhysicsLX56_Projectiles.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/Process.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/StackWalker.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/StringBuf.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/StringUtils.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/TaskManager.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/ThreadPool.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/Timer.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/Unicode.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/UploadSpeedTest.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/Version.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/common/XMLutils.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/common/sex.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/main.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Unit filename="../../src/server/CBanList.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/server/CDeathMatch.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CDemolitionsMatch.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CGameMode.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CHideAndSeek.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CRace.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CServer.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/server/CServerConnection.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CServer_Game.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/server/CServer_Parse.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/server/CServer_Send.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/server/CTag.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CTeamDeathMatch.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/CaptureTheFlag.cpp">
+			<Option virtualFolder="Game Files/Game modes/" />
+		</Unit>
+		<Unit filename="../../src/server/ChatCommand.cpp">
+			<Option virtualFolder="Game Files/" />
+		</Unit>
+		<Unit filename="../../src/server/DedicatedControl.cpp">
+			<Option virtualFolder="Game Core/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

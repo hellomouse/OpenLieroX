@@ -1,0 +1,34 @@
+#!/usr/bin/python -u
+
+import random
+global worms, io
+
+# just set some default stuff, it doesn't matter for Hide&Seek
+setvar( "GameOptions.GameInfo.ModName", "MW 1.0" )
+SetWeaponBans("Mortar Only")
+setvar( "GameOptions.GameInfo.LoadingTime", "100" )
+
+# some good settings for this gametype
+setvar("GameOptions.GameInfo.Lives", 0)
+setvar("GameOptions.GameInfo.KillLimit", -1)
+
+# set hide&seek
+setvar("GameOptions.GameInfo.GameType", 4)
+
+# We let the HideAndSeek gamemode calculate the best time.
+# If there is request for a Preset for HideAndSeek with custom
+# time (the time from options), we could make this optional here.
+setvar("GameOptions.GameInfo.TimeLimit", -1)
+
+setvar( "GameOptions.GameInfo.FillWithBotsTo", 4 )
+
+# Pick one random seeker
+for w in worms.values():
+	io.setWormTeam( w.iID, 0 )
+seeker = random.choice(worms.values()).iID
+io.setWormTeam( seeker, 1 )
+if len(worms.values()) >= 4: # More than 4 players
+	seeker2 = seeker
+	while seeker2 == seeker:
+		seeker2 = random.choice(worms.values()).iID
+		io.setWormTeam( seeker2, 1 ) # Pick another random seeker

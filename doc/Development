@@ -1,0 +1,300 @@
+Development information
+=======================
+
+Content
+=======
+Configure your IDE
+	Information for Dev-C++
+	Mac OS X
+	MSVC
+	Linux
+Code
+	SVN
+	Basic information
+	Style guidelines
+	Overview of the code
+
+
+	
+IDE : Information for Dev-C++
+=============================
+
+Firstly, I am using Dev-C++ 4.9.9.2 (some beta of v5).
+
+I have used the Package manager to download the following packets:
+- zlib (1.2.3)
+- libiconv (1.9.1)
+- Libxml (2.6.19)
+- libjpeg (6b-4)
+- libpng (1.2.8)
+- libsdl (1.2.11)
+- SDL_image (1.2.4-notiff)
+- SDL_mixer (1.2.6)
+
+I only had to download libgd manually. I did this here:
+	http://www.libgd.org/Downloads
+I downloaded the file:
+	gd-2.0.34-win32.zip
+And extracted all the contents simply directly to my Dev-C++ (so all included
+files goes to the right subdirs).
+
+The provided Dev-C++ project-file (under build/DevCpp) should work now.
+
+If you have trouble with compiling, visit:
+http://lxalliance.net/forum/index.php?topic=6444.0
+
+
+
+
+IDE : Mac OS X
+==============
+
+You need the following frameworks (directories) in /Library/Frameworks/:
+	SDL.framework
+	SDL_image.framework
+	SDL_mixer.framework
+	GD.framework
+	FreeType.framework
+	UnixImageIO.framework
+I created a ZIP-package containing all these frameworks. You can download it here: https://sourceforge.net/project/showfiles.php?group_id=180059&package_id=289742
+
+You can also download all the files yourself:
+Download SDL: http://www.libsdl.org/release/SDL-1.2.12.dmg
+Download SDL_image: http://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.6.dmg
+Download SDL_mixer: http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.dmg
+Download GD, FreeType, UnixImageIO: http://www.kyngchaos.com/staticpages/index.php?page=software-unixport-frameworks
+
+You can use now the Xcode-projectfile under build/Xcode.
+
+Use the script build/Xcode/fix_binary.sh if you want to distribute your
+builded application-binary. This script fixes some hardcoded library linking
+paths in the binary to relative ones (linked to the frameworks inside the
+application-package).
+
+The script build/Xcode/make_tmp_build.sh creates a ZIP-archiv for
+you under distrib/tmpbuild.
+
+
+
+
+IDE : MSVC
+==========
+First you have to install the dependencies:
+- zlib (1.2.3) (www.zlib.net)
+- libiconv (1.9.1) (www.gnu.org/software/libiconv/)
+- Libxml (2.6.19) (www.libxml.org)
+- libjpeg (6b-4) (www.ijg.org)
+- libpng (1.2.8) (www.libpng.org)
+- libsdl (1.2.11) (www.libsdl.org)
+- libgd (2.0.35) (www.libgd.org)
+- SDL_image (1.2.4) (www.libsdl.org)
+- SDL_mixer (1.2.6) (www.libsdl.org)
+
+Then simply open the corresponding project in build directory
+(msvc 2005 - VC++ 8 (2005), msvc 2008 - VC++ 9 (2008))
+and press F5 or F7 to compile.
+
+MSVC6 is not supported anymore. MSVC6 doesn't correctly supports the C++
+standards and has therefore some problems. To make it work with MSVC6, you
+would need to hack the code a bit. Also, the project files of MSVC6 are
+not updated anymore. Therefore MSVC6 is not included in the release. If
+you are interested though in refreshing and using them, grab them from SVN
+revision 1999 in build/msvc.
+
+If you have trouble with getting dependencies or compiling, visit
+http://lxalliance.net/forum/index.php?topic=6444.0
+
+
+
+
+IDE : Linux
+===========
+
+First of all, you should install all packages (like SDL) this game depends on.
+Take a look into the file DEPS for a list. Then, you should install also a
+compiler (I would prefer GCC) and CMake (we use CMake as our make-system).
+Now let's test if the game compiles fine for you; type:
+	
+	cmake .	# this will create you an ordinary Makefile
+			# you only have to do this once or when you added new code-files
+	make	# this will start the compilation
+
+Run the game with:
+	
+	./start.sh
+
+If everything works fine and you want to start coding now, I would recommend
+you to use an IDE. I myself use KDevelop and I think it's also fine for you.
+In KDevelop, you can very easily import this project. Simply select the
+"import project" option in the menu and select the directory of OpenLieroX.
+It will find all source-files automatically now. Because it will also find the
+Makefile you have created with CMake, the building of the project will also
+work directly. The onliest thing you still have to set is the path to the
+binary (it is bin/openlierox). But look also over other project settings or
+general settings in KDevelop, perhaps you find some other nice features which
+you can enable.
+
+We support also multiple configurations for your build via CMake. When you run
+'cmake .' firstly, you will get a list of available variables and their values.
+
+For example, to enable HawkNL-builtin support, type this:
+
+	cmake -D HAWKNL_BUILTIN=Yes .
+
+The provided compile.sh script is intended only for end-user who want to
+compile the game only once. It is also used from within other Linux
+distribution packages like the Gentoo-ebuild.
+
+
+
+
+Code : SVN
+==========
+
+Some basic rules for your work with SVN:
+- Ensure that the code is compiling and working before you commit it!
+- Please commit only good code. See the guidelines.
+- Write a comment to every commit! When watching the changes, it helps a lot
+  if I can read within a comment what you changed.
+- Make small commits. A commit should only contain one new feature or one
+  bugfix, not more. It is a lot more easier to watch the changes if the
+  commits are small. Also it is easier to find a bug later on.
+- Before you want make a real important or huge change to something in SVN,
+  please contact the other developers and discuss this first.
+- Always keep in mind that others don't like to get disturbed by you.
+- Take a short look at the commits of the others. Perhaps they have made some
+  changes to your code or placed some important comment there.
+	Webinterface to our SVN:
+	http://openlierox.svn.sourceforge.net/viewvc/openlierox/
+
+
+
+Code : Basic information
+========================
+
+If you want to work with the code, read this paragraph (and perhaps this whole
+file).
+
+Some starting hints:
+- Read the code-overview.
+- Esp., look at doc/TODO to get a rough idea what currently needs some work.
+- Look also at the other files under doc/.
+- Configure your IDE. That will help you a lot on working on it.
+- Do a global search in the source-code for the string "TODO". It will give
+  you a lot of results. If you are bored or so, simply start fixing these
+  TODOs. :) This will also gives you some impressions of the code.
+- Make some cleanups. I marked the most terrible parts which have to be
+  recoded but there are much more which don't look that nice.
+- Talk to us.
+
+
+
+Code : Style guidelines
+=======================
+
+[TODO: this has to be extended]
+
+Some basic rules you should keep in every case:
+- Use standard C++. Not MS C++!!
+	For example:
+		for(int i = 0;;) {}
+		for(i = 0;;) {}
+	is *no* correct C++ code! But this is:
+		for(int i = 0;;) {}
+		for(int i = 0;;) {}
+- Don't make any realy crazy optimisations. Produce clear, simple and short
+  code.
+- Make small functions! If your function is too big, cut it into pieces.
+- Don't use too much local variables in a function.
+	1. It is slow.
+	2. You made something wrong. Generaly, you don't need this.
+	3. It looks terrible!
+- Don't ever use C-technics. That includes for example all strcpy and related
+  functions and of course in general C-strings. Also don't use int if you
+  mean bool. Things like these...
+- Use the STL and STL-like technics (for example, use std::string, std::list,
+  ...).
+	Some good links:
+	http://www.cppreference.com/index.html
+	http://www.sgi.com/tech/stl/table_of_contents.html
+- Produce abstract and general code!
+	(This is realy important because we soon want to change the base code
+	 and all code, which is not general enough has to be redone. Keep this
+	 in mind...)
+- Don't hack around!
+	It's not good if you add some new features only with some small hacks to
+	the code. The code becomes even more terrible by this. Also, almost every
+	hacked-in feature isn't general enough to allow a simple reuse of it in a
+	new codebase.
+	If you want to add kind of a hack for some backward-compatibility, think
+	first about if you realy want this. Perhaps it's just better for this new
+	feature to allow it only for new versions. Because you should not only
+	think of the backward-compatibility. Also think of the
+	forward-compatibility. Also, if you realy want to implement a hack,
+	leave at least the code clean!
+- Format and indent the code correct! (Use tabs for indenting!)
+- Place spaces between each element which should be read seperated!
+	For example, this looks terrible:
+	CVec* v=somewhat;for(v->x=0,v->y=10;(v->x<10&&v->y>=0);v->x++,v->y--)cout<<v->x<<v->y<<endl;
+	This looks much better:
+	CVec* v = somewhat;
+	for(v->x = 0, v->y = 10; v->x < 10 && v->y >= 0; v->x++, v->y--)
+		cout << v->x << v->y << endl;
+- Mark incomplete or temporary code with a TODO!
+- Comment your code where you made some strange, not selfexplaining stuff.
+- Don't upload any temporary testing-code into the code which produces for
+  example some debug-files for you which is useless for the others.
+- Don't add options for every single change you made in the code. If you are
+  unsure if users will like it, discuss the problem with othrer devs or community
+  first. Too many weird options will only confuse the user.
+- Make sure that the code compiles before uploading
+- TEST your code before uploading (the deeper the better)
+  - Mark unstable parts with TODO
+- Brackets after if/for/while etc. statements are separated by two spaces, for example:
+  for (int i=0; i < 10, i++)  {
+    // some code here
+  }
+
+...
+
+
+
+Code : Overview of the code
+===========================
+
+[TODO: this has to be extended a bit]
+[but don't extend it to much, it should only be an overview here that allows
+ you withing an hour to get some basic ideas and impressions of the code :)]
+[also, don't explain every single code file here; if you want to know what
+ each single code-file is for, look into them; they (should) contain this
+ information themself]
+
+So, you are new to the code, so this will perhaps help you a bit:
+
+Files:
+src/main.cpp	- includes the main-entry point and the gameloop
+src/client/*	- mainly the menu and all client-related stuff
+src/common/*	- all more generaly stuff and also the main-structures
+                  (like worm, map, ..)
+src/server/*	- server-related stuff, also for example the game itself
+include/*		- header-files for all sources
+
+Take also a look to the most important structures:
+CMap, CWorm, CServer, CClient, CGameScript, LieroX
+
+Game-logic:
+CServer, CClient, CGameScript
+
+Important for physics:
+Physics*
+CMap, CWorm, CProjectile, Entity, CNinjaRope
+
+Other important things:
+File-IO, also (mainly) searchpath-handling: FindFile
+Caching system for graphics and sounds: Cache
+Network-related things: Networking, CBytestream, CChannel
+Sound-related: Sounds
+Graphic-related: Graphics, GfxPrimitives
+
+...
+

@@ -1,0 +1,9 @@
+#!/usr/bin/python -u
+
+setvar( "GameOptions.GameInfo.LevelName", "CastleStrike.lxl" )
+
+setvar( "GameOptions.GameInfo.ModName", "MW 1.0" )
+
+setvar( "GameOptions.GameInfo.LoadingTime", "20" )
+
+SetWeaponBans("Mortar Only")

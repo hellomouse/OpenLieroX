@@ -1,0 +1,186 @@
+0.58 (beta1,2: 2009-10-05, beta3: 2009-10-09, beta4: 2009-10-12)
+====
+- Hide & Seek gamemode
+- Capture The Flag gamemode
+- Race / Team Race gamemodes
+- extended physics engine / gamescript (still in development)
+- physics should be exactly like LX56
+- high-resolution level support
+- infinite maps
+- game size factor (you can make everything bigger or smaller)
+- possibility to disable minimap
+- hit/damage yourself/teammembers can be enabled/disabled (aka friendly fire on/off)
+- support for Commander Keen 1-3 levels
+- optional immediate start (when not all people have selected wpns yet)
+- select weapons ingame (chat command /weapons)
+- air jumping as an optional feature
+- worm speed/damage/shield/friction factor
+- projectile friction factor
+- damage reporting (shows how much you injured a worm)
+- ingame console can be used everywhere, also in menu
+- ingame console much more advanced, many new commands, better autocompletion
+- IRC support (for global chatting)
+- background music by Corentin Larsen
+- new game options dialog
+- dedicated server becomes useable
+- improved connect-during-game
+- uploadlimit check fixed + automatic measuring of speed
+- more stable network (CChannel3)
+- improved HTML viewer
+- new debug logging system
+- and, as usual, many further fixes which I don't want to list here
+More details: http://www.openlierox.net/forum/index.php/topic,12642.0.html
+
+
+0.57_beta8 (rev2717, 2008-10-09)
+==========
+- Chatbox has HTML and copy&paste support
+- connect during game support
+- fixed max upload bandwidth limit
+- Menu_MessageBox can handle long messages correctly
+- better synchronisation for shooting, that should also fix the self-shooting problem
+- reconnects from a client are handled better
+- general fixes of new features (since Beta6)
+- removed media player
+
+
+0.57_beta7 (rev2451, 2008-09-25)
+==========
+- Game-speed multiplicator
+- Options editable from everywhere in the game
+- Force random weapon selection (with the extensions to have the same weapon for all players)
+- Automatic weapon selection if only one weapon is available
+- Notify application window on events when application is in background
+- Auto-completion for chat commands
+- Command button for host in game
+- Show player online/chatting/away status
+- Client info dialog for host
+
+
+0.57_beta6 (rev2371, 2008-09-23)
+==========
+- fixed crashing in DBZ mod
+- improved connecting to servers behind firewall/NAT
+- reduced the loading time of IP to Country database a bit
+- added support for G15 keyboards
+- improved downloading, added mod downloading
+- fixed a security bug in the authorise command
+- added video post processors that change the final appearance of the screen
+- updated joystick control
+- recovered compatibility with Windows 98/ME
+- faster projectile simulation
+- fixed spawning in rock in random maps
+- fixed duplicate joining
+- fixed weird game behavior when kicking bot
+- fixed crashes in the viewport manager dialog
+- added map anti-aliasing
+- fixed crashes in the News tab
+- improved crash reporting tool
+- fixed bots not shooting with beam weapons
+- fixes in physics (wallshooting, self-shooting, flying at the top of the level)
+- server displays only one message on multiple suicides
+- optionally attach a console window using -console under Windows
+
+
+0.57_beta5 (rev1968, 2008-03-15)
+==========
+- fast and easy theme switching
+  ( and LieroX 0.56 theme included )
+- disallow strafing on server if wanted
+- optimised/fixed joystick support
+- optimised network
+- fixed aiming bug of Beta4
+- spectate option for host
+- bugfixes
+
+
+0.57_beta4 (rev1798, 2008-02-23)
+==========
+- very basic dedicated server
+- joystick support (for playing)
+- mouse support (for playing)
+- copy&paste support for Linux and MacOSX
+- config file got parsed completly and unknown options
+  are kept, therefore forward-compatible
+- better forward-compatibility for net-protocol
+- FPS independent physics
+- more correct projectile simulation
+- experimental file transfer support
+- delete-key works now under MacOSX
+- more keys got recognised
+  (super and meta keys, that includes also the
+  Apple-key on a Mac)
+- support for multiple masterservers
+- more intelligent event-handling (in some parts);
+  all pressed keys got recognised in chat/console
+  and you can also play on very low FPS
+- DNS support for serverlist
+- Worm AI improvements
+- usage of ALSA on Linux by default
+- network improved
+- cache for map and gamescript
+- Developer documentation
+- strafing
+- optimised sorting in combobox
+- FPS limit is also valid for menu
+- menu takes less resources
+- help for weapon selection
+- fixed changing of graphic settings
+- and a lot of other fixes / cleanups
+
+
+0.57_beta3 (rev917, 2007-08-10)
+==========
+- 16/24/32 bit graphic support and OpenGL support
+- runs on MacOSX
+- new design & icon (thanks goes to Raziel)
+- probably fixed any saving-problem
+  (problem was: sometimes SDL_Quit gives a segfault
+  and saving was done after this; now it's done before)
+- full Unicode/UTF8 support
+- font antialasing support
+- working Dev-C++ project (therefore MingW support)
+- MaxFPS in option-dialog
+- Worm AI improvements
+- ninjarope physic simulation is FPS independent
+- profile-saving is correct now
+
+
+0.57_beta2 (rev498, 2007-04-09)
+==========
+- BPP independent
+- ingame mediaplayer
+- 64bit version works now
+- more fixes, general improvements, etc.
+- code cleanups (replacements with C++/STL technics)
+- whole project uses std::string now (realy huge change)
+- collision-checks are improved (more like the original LX, that
+  means, it goes at least through walls with ~3px width)
+- chatbox improvements
+- unlimited number of bots in net play
+- ~/ at the beginning of a searchpath is handled correctly and there
+  is a more correct method to get the homedir
+- MaxFPS option under [Advanced] in ~/.OpenLieroX/cfg/options.cfg
+- fixed compile-issues on 64bit systems
+- no-clipping-issues with weapon-generated dirt are fixed
+
+
+0.57_beta1 (rev317, 2007-01-27)
+==========
+- POSIX-compatible (well-tested under Linux).
+- endian-independent (runs without any problems on my big endian PPC)
+- a _huge_ amount of bug-fixes
+- the old BASS soundsystem was replaced by SDL_mixer
+- new file handling routines
+  (1. based on searchpaths; 2. case-insensitive handling)
+- new bot AI with a very nice pathfinding-algo
+- some other additions/extensions/...
+- ...
+
+
+Project started on 2006-10-24.
+
+
+======================================
+
+0.56 was the original LieroX by JasonB

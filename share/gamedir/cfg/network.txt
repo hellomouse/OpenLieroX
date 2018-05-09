@@ -1,0 +1,66 @@
+[NetworkTexts]
+HasConnected = <player> has connected
+HasLeft = <player> has left
+HasTimedOut = <player> has timed out
+
+HasBeenKicked = <player> has been kicked out
+HasBeenKickedReason = <player> has been kicked because <reason>
+HasBeenBanned = <player> has been banned
+HasBeenMuted = <player> has been muted
+HasBeenUnmuted = <player> has been unmuted
+IsSpectating = <player> will only spectate this round
+IsPlaying = <player> will play this round!
+KickedYou = You have been kicked
+KickedYouReason = You have been kicked because <reason>
+BannedYou = You have been banned
+YouQuit = You have quit
+YouTimed = You timed out
+
+Killed = <killer> killed <victim>
+CommitedSuicide = <player> commited suicide
+FirstBlood = <player> drew first blood
+TeamKill = <player> is an ugly teamkiller
+CTFScore = <player> has scored
+KilledAFK = <killer> typekilled <victim>
+
+PlayerOut = <player> is out of the game
+TeamOut = The <team> team is out of the game
+PlayerHasWon = <player> has won the match
+TeamHasWon = The <team> team has won the match
+
+WormIsIt = <player> is IT!
+
+SeekerMessage = You are a seeker, you have to find and catch the hiders. You have to catch the hiders before <time> seconds are up
+HiderMessage = You are a hider, you have to run away from the seekers who are red. You have to hide for <time> seconds.
+CaughtMessage = <seeker> caught <hider>!
+HiderVisible = <font color="red">You are visible to the seekers, run!</font>
+SeekerVisible = You are visible to the hiders
+VisibleMessage = <player> is visible!
+YouAreHidden = <font color="green">You are invisible again!</font>
+HiddenMessage = <player> is hiding!
+
+
+Spree1 = <player> is on a killing spree!
+Spree2 = <player> is on a rampage!
+Spree3 = <player> is dominating!
+Spree4 = <player> is unstoppable!
+Spree5 = <player> is GODLIKE!
+
+
+DyingSpree1 = <player> is on a dying spree!
+DyingSpree2 = <player> is a target!
+DyingSpree3 = <player> is a sitting duck!
+DyingSpree4 = <player> is free kills!
+DyingSpree5 = <player> is WORTHLESS!
+
+ServerFull = Server is full
+NoEmptySlots = Server has no empty slots
+WrongProtocol = Wrong protocol version. The server protocol version is <version>
+BadVerification = Bad connection verification
+NoIpVerification = No verification for address
+GameInProgress = Cannot join, the game is currently in progress
+YouAreBanned = You are banned on this server
+BotsNotAllowed = Sorry, bots are not allowed on this server
+WantsJoin = <player> wants to join the server
+
+KnownAs = <oldname> is now known as <newname>
