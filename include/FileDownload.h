@@ -26,7 +26,7 @@
 #include <map>
 #include <stdio.h>  // for FILE
 #include "ThreadPool.h"
-#include <SDL_mutex.h>
+#include <SDL2/SDL_mutex.h>
 #include "HTTP.h"
 #include "types.h"
 #include "CBytestream.h"

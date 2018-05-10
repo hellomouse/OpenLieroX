@@ -16,7 +16,7 @@
 #ifndef __CPROGRESSBAR_H__SKINNED_GUI__
 #define __CPROGRESSBAR_H__SKINNED_GUI__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "SkinnedGUI/CWidget.h"
 #include "SkinnedGUI/CLabel.h"
 

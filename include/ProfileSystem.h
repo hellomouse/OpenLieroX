@@ -17,7 +17,7 @@
 #ifndef __PROFILESYSTEM_H__
 #define __PROFILESYSTEM_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <stdlib.h>
 #include "SmartPointer.h"

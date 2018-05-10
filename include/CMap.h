@@ -17,7 +17,7 @@
 #ifndef __CMAP_H__
 #define __CMAP_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <set>
 #include "ReadWriteLock.h"

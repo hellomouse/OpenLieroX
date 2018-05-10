@@ -16,7 +16,7 @@
 #ifndef __CBAR_H__DEPRECATED_GUI__
 #define __CBAR_H__DEPRECATED_GUI__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "MathLib.h"
 #include "Color.h"
 

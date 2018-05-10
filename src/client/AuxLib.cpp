@@ -23,10 +23,10 @@
 
 #include <iomanip>
 #include <time.h>
-#include <SDL.h>
-#include <SDL_syswm.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_syswm.h>
 #ifdef REAL_OPENGL
-#include <SDL_opengl.h>
+#include <SDL2/SDL_opengl.h>
 #endif
 #include <cstdlib>
 #include <sstream>

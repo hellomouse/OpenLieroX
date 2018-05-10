@@ -21,12 +21,12 @@ void ClearUserNotify() {}
 	#include <Carbon/Carbon.h>
 #elif defined(WIN32)
 	#include <windows.h>
-	#include <SDL.h>
-	#include <SDL_syswm.h>
+	#include <SDL2/SDL.h>
+	#include <SDL2/SDL_syswm.h>
 #elif defined(X11)
 	#include <X11/Xlib.h>
-	#include <SDL.h>
-	#include <SDL_syswm.h>
+	#include <SDL2/SDL.h>
+	#include <SDL2/SDL_syswm.h>
 
 // Should be called from main thread because SDL does not lock X11 display properly
 void x11_SetDemandsAttention( bool v ) {

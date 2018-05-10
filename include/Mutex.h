@@ -10,7 +10,7 @@
 #ifndef __MUTEX_H__
 #define __MUTEX_H__
 
-#include <SDL_mutex.h>
+#include <SDL2/SDL_mutex.h>
 
 #define INVALID_THREAD_ID (Uint32)-1
 

@@ -17,7 +17,7 @@
 #ifndef __ENTITY_H__
 #define __ENTITY_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <vector>
 #include "Event.h"
 #include "Color.h"

@@ -10,7 +10,7 @@
 #ifndef __OLX__CONDITION_H__
 #define __OLX__CONDITION_H__
 
-#include <SDL_mutex.h>
+#include <SDL2/SDL_mutex.h>
 #include "Mutex.h"
 
 class Condition {

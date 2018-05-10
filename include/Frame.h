@@ -17,7 +17,7 @@
 #ifndef __FRAME_H__
 #define __FRAME_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 
 // Frame flags

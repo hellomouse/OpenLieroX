@@ -12,7 +12,7 @@
 
 #include <string>
 #include <cstdio>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 class CMap;
 
 struct MapHeader {

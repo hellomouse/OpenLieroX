@@ -17,7 +17,7 @@
 #ifndef __CGUILAYOUT_H__DEPRECATED_GUI__
 #define __CGUILAYOUT_H__DEPRECATED_GUI__
 
-#include <SDL.h> // for SDL_Rect
+#include <SDL2/SDL.h> // for SDL_Rect
 #include "DeprecatedGUI/CWidget.h"
 #include "CVec.h"
 #include "SmartPointer.h"

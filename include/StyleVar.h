@@ -16,7 +16,7 @@
 #ifndef __STYLEVAR_H__
 #define __STYLEVAR_H__
 
-#include <SDL.h> // for Uint32
+#include <SDL2/SDL.h> // for Uint32
 
 // Stylable variable
 // Behaves as a normal variable but takes care of the importance

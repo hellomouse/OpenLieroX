@@ -20,7 +20,7 @@
 #ifndef __CACHE_H__
 #define __CACHE_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <vector>
 #include <map>
 #include <set>

@@ -40,7 +40,7 @@
 
 #include <X11/Xlib.h>
 #include <unistd.h>
-#include <SDL_syswm.h>
+#include <SDL2/SDL_syswm.h>
 
 #include "Mutex.h"
 #include "Condition.h"

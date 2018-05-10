@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <cmath>
 #include <time.h>
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include "MathLib.h"
 

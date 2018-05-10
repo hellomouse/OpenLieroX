@@ -10,7 +10,7 @@
 #ifndef __TASKMANAGER_H__
 #define __TASKMANAGER_H__
 
-#include <SDL_thread.h>
+#include <SDL2/SDL_thread.h>
 #include <string>
 #include <set>
 #include <list>
