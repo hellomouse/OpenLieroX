@@ -39,26 +39,22 @@ struct ModifiersState  {
 	bool bMeta;
 };
 
-struct KeyboardEvent {
-	int sym;
-    UnicodeChar ch;
-	bool down;
-	ModifiersState state;
-};
-
 struct MouseEvent {
 	int x, y;
 	int button;
 	bool down;
 };
 
+struct KeyboardEvent {
+	SDL_Keycode sym;
+    UnicodeChar ch;
+	bool down;
+	ModifiersState state;
+	KeyboardEvent() : sym(0), ch(0), down(false) {}
+};
+
 // Keyboard structure
-// HINT: KeyDown is the state of the keyboard
-// KeyUp is like an event and will only be true once
 struct keyboard_t {
-	Uint8	*keys;
-	UnicodeChar	KeyUp[SDLK_LAST];
-	UnicodeChar	KeyDown[SDLK_LAST];
     int     queueLength;
     KeyboardEvent keyQueue[MAX_KEYQUEUE];
 };
@@ -102,8 +98,6 @@ typedef Event<SDL_Event*> SDLEvent;
 // not be needed in most cases.
 // If you want to add a user event, DON'T add the handler here. Use SendSDLUserEvent()
 // and your event will get called automatically. 
-extern SDLEvent sdlEvents[SDL_NUMEVENTS];
-
 
 void 		InitEventSystem();
 void		ShutdownEventSystem();

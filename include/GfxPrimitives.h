@@ -22,6 +22,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_video.h>
+#include <SDL2/SDL_surface.h>
 #include <string>
 #include <assert.h>
 
@@ -29,7 +31,7 @@
 #include "SmartPointer.h"
 #include "Debug.h"
 #include "CVec.h"
-
+#include <boost/mpl/void.hpp>
 
 //
 // Misc routines, defines and variables
@@ -59,7 +61,7 @@ bool IsCorrectSurfaceFormat(const SDL_PixelFormat* format);
 
 /////////////////////
 // Locking and unlocking routines, must be called before doing anything with pixels
-inline bool LockSurface(SDL_Surface * bmp)  {
+inline bool LockSurface(SDL_Surface *bmp)  {
 	if (SDL_MUSTLOCK(bmp))
 		return SDL_LockSurface(bmp) != -1;
 	return true;
@@ -74,6 +76,22 @@ inline void UnlockSurface(SDL_Surface * bmp)  {
 }
 inline void UnlockSurface(const SmartPointer<SDL_Surface> & bmp)  {
 	UnlockSurface(bmp.get());
+}
+
+inline bool HasSurfaceBlendMode(SDL_Surface* surface) {
+    SDL_BlendMode mode = SDL_BLENDMODE_NONE;
+    SDL_GetSurfaceBlendMode(surface, &mode);
+    return mode != SDL_BLENDMODE_NONE;
+}
+
+inline bool HasSurfaceColorKey(SDL_Surface* surface) {
+ 	return SDL_GetColorKey(surface, NULL) == 0;
+}
+
+inline Uint32 GetSurfaceColorKey(SDL_Surface* surface) {
+    Uint32 key;
+    SDL_GetColorKey(surface, &key);
+ 	return key;
 }
 
 #define LOCK_OR_QUIT(bmp)	{ if(!LockSurface(bmp)) return; }
@@ -107,10 +125,10 @@ public:
 	
 	SDLRectBasic() { this->SDL_Rect::x = this->SDL_Rect::y = this->SDL_Rect::w = this->SDL_Rect::h = 0; }
 	SDLRectBasic(const SDL_Rect & r): SDL_Rect(r) {}
-	Type& x() { return this->SDL_Rect::x; }
-	Type& y() { return this->SDL_Rect::y; }
-	TypeS& width() { return this->SDL_Rect::w; }
-	TypeS& height() { return this->SDL_Rect::h; }
+	Type x() { return this->SDL_Rect::x; }
+	Type y() { return this->SDL_Rect::y; }
+	TypeS width() { return this->SDL_Rect::w; }
+	TypeS height() { return this->SDL_Rect::h; }
 
 	Type x() const { return this->SDL_Rect::x; }
 	Type y() const { return this->SDL_Rect::y; }
@@ -307,11 +325,6 @@ SmartPointer<SDL_Surface> LoadGameImage(const std::string& _filename, bool witha
 #define		LOAD_IMAGE_WITHALPHA(bmp,name)	{ if (!Load_Image_WithAlpha(bmp,name)) return false; }
 #define		LOAD_IMAGE_WITHALPHA2(bmp,name1,name2)	{ if (!Load_Image_WithAlpha(bmp,name1) && !Load_Image_WithAlpha(bmp,name2)) return false; }
 #define		LOAD_IMAGE_WITHALPHA__OR(bmp,name,img)	{ if (!Load_Image_WithAlpha(bmp,name) && ((bmp = (img)).get() == NULL)) return false; }
-
-/////////////////
-// Gets the colorkey from the surface
-#define		COLORKEY(bmp) ((bmp)->format->colorkey)
-
 
 /////////////////////
 // Load an image, without alpha channel
@@ -680,11 +693,11 @@ inline void GetColour3(Uint32 pixel, SDL_PixelFormat* format, Uint8 *r, Uint8 *g
 ////////////////
 // Returns true if the color is considered as (partly) transparent on the surface
 inline bool IsTransparent(SDL_Surface * surf, Uint32 color)  {
-	if((surf->flags & SDL_SRCALPHA) && ((color & surf->format->Amask) != surf->format->Amask))
+	if(HasSurfaceBlendMode(surf) && ((color & surf->format->Amask) != surf->format->Amask))
 		return true;
 
 	// TODO: should this check be done, if SDL_SRCALPHA was set? SDL/OpenGL possibly will ignore it
-	if((surf->flags & SDL_SRCCOLORKEY) && (EqualRGB(color, COLORKEY(surf), surf->format)))
+	if(HasSurfaceColorKey(surf)&& (EqualRGB(color, GetSurfaceColorKey(surf), surf->format)))
 		return true;
 
 	return false;
@@ -760,10 +773,10 @@ inline void FillSurface(SDL_Surface * dst, Uint32 colour) {
 // Fills the whole surface with a transparent color
 inline void FillSurfaceTransparent(SDL_Surface * dst)  {
 	// check alpha first as it has priority (if set, colorkey is ignored)
-	if (dst->flags & SDL_SRCALPHA)
+	if (HasSurfaceBlendMode(dst))
 		FillSurface(dst, SDL_MapRGBA(dst->format, 255, 0, 255, SDL_ALPHA_TRANSPARENT));
-	else if (dst->flags & SDL_SRCCOLORKEY)
-		FillSurface(dst, COLORKEY(dst));
+	else if (HasSurfaceColorKey(dst))
+		FillSurface(dst, GetSurfaceColorKey(dst));
 	else
 		warnings("There's no possibility to make this surface transparent!\n");
 }

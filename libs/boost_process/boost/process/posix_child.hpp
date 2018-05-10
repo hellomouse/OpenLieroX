@@ -19,20 +19,16 @@
 #define BOOST_PROCESS_POSIX_CHILD_HPP
 /** \endcond */
 
-#include <boost/process/config.hpp>
+#include <boost/process.hpp>
 
 #if !defined(BOOST_PROCESS_POSIX_API)
-#   error "Unsupported platform."
+#error "Unsupported platform."
 #endif
 
 #include <cstdlib>
 #include <map>
 
 #include <boost/process/child.hpp>
-#include <boost/process/detail/pipe.hpp>
-#include <boost/process/detail/posix_ops.hpp>
-#include <boost/process/pistream.hpp>
-#include <boost/process/postream.hpp>
 #include <boost/shared_ptr.hpp>
 
 namespace boost {

@@ -7,7 +7,7 @@
  *
  */
 
-#include <SDL_thread.h>
+#include <SDL2/SDL_thread.h>
 #include "ThreadPool.h"
 #include "Debug.h"
 #include "AuxLib.h"
@@ -64,7 +64,7 @@ void ThreadPool::prepareNewThread() {
 	t->finished = false;
 	t->working = false;
 	availableThreads.insert(t);
-	t->thread = SDL_CreateThread(threadWrapper, t);
+	t->thread = SDL_CreateThread(threadWrapper, "test", t);
 }
 
 int ThreadPool::threadWrapper(void* param) {

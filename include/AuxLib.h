@@ -94,7 +94,7 @@ public:
 	static void init();
 	static void uninit();
 
-	virtual void resetVideo() { m_videoSurface = m_videoBufferSurface = SDL_GetVideoSurface(); } // this dummy just uses the real video surface directly; it is called from SetVideoMode
+	virtual void resetVideo() {}
 	virtual void processToScreen() {} // should process m_videoSurface to real video surface; this is run within an own thread
 	virtual int screenWidth() { return 640; }
 	virtual int screenHeight() { return 480; }
