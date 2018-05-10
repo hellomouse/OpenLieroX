@@ -11,10 +11,9 @@
 #ifndef __UCSTRING_H__
 #define __UCSTRING_H__
 
-#include <SDL.h> // for Uint32
 #include <string>
 
-typedef Uint32 UnicodeChar;
+typedef unsigned int UnicodeChar;
 
 
 

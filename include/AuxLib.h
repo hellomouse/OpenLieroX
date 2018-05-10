@@ -19,7 +19,7 @@
 #ifndef __AUXLIB_H__
 #define __AUXLIB_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 
 #ifdef WIN32

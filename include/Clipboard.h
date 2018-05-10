@@ -31,7 +31,7 @@
 #define CLIPBOARD_HPP_INCLUDED
 
 #include <string>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 void copy_to_clipboard(const std::string& text);
 std::string copy_from_clipboard();

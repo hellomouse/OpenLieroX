@@ -24,7 +24,7 @@
 
 #ifndef DEDICATED_ONLY
 // we are using SDL_mixer at the moment
-#include <SDL_mixer.h>
+#include <SDL2/SDL_mixer.h>
 
 #	if !defined(SDL_MIXER_MAJOR_VERSION) || (SDL_MIXER_MAJOR_VERSION < 1) || !defined(SDL_MIXER_MINOR_VERSION) || (SDL_MIXER_MINOR_VERSION < 2) || !defined(SDL_MIXER_PATCHLEVEL) || (SDL_MIXER_PATCHLEVEL < 8)
 // <=SDL_mixer-1.2.7 does not restart correctly 

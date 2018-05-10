@@ -16,7 +16,7 @@
 #ifndef __CBACKGROUND_H__SKINNED_GUI__
 #define __CBACKGROUND_H__SKINNED_GUI__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "CssParser.h"
 #include "Color.h"
 #include "SmartPointer.h"

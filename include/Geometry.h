@@ -12,7 +12,7 @@
 
 #include <list>
 #include <vector>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <cmath>
 #include <cstdlib>
 #include "CVec.h"

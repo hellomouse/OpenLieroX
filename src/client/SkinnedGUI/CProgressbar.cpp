@@ -22,7 +22,6 @@
 #include "XMLutils.h"
 #include "FindFile.h"
 
-
 namespace SkinnedGUI {
 
 //////////////

@@ -16,8 +16,6 @@
 #ifndef __STYLEVAR_H__
 #define __STYLEVAR_H__
 
-#include <SDL2/SDL.h> // for Uint32
-
 // Stylable variable
 // Behaves as a normal variable but takes care of the importance
 #define DEFAULT_PRIORITY 0
@@ -31,12 +29,12 @@ template<typename _T>
 class StyleVar  {
 private:
 	_T		var;
-	Uint32	priority;
+	unsigned int	priority;
 
 public:
 	StyleVar() : priority(DEFAULT_PRIORITY) {}
 	//StyleVar(_T val) : var(val), priority(DEFAULT_PRIORITY) {}
-	void set(_T val, Uint32 prio)	{ if (prio >= priority) { var = val; priority = prio; } }
+	void set(_T val, unsigned int prio)	{ if (prio >= priority) { var = val; priority = prio; } }
 	_T get() const	{ return var; }
 
 	operator _T() const  { return var; }

@@ -14,7 +14,7 @@
 #define __WEAPONDESC_H__
 
 #include <string>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "ProjAction.h"
 #include "Color.h"
 

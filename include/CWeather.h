@@ -17,7 +17,7 @@
 #ifndef __CWEATHER_H__
 #define __CWEATHER_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "CVec.h"
 #include "SmartPointer.h"
 

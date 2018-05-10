@@ -20,7 +20,7 @@
 #ifndef __CFONT_H__
 #define __CFONT_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <vector>
 #include "Unicode.h"
 #include "SmartPointer.h"

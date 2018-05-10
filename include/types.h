@@ -22,7 +22,7 @@
 #ifndef __TYPES_H__
 #define __TYPES_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <cassert>
 
 struct TimeDiff {

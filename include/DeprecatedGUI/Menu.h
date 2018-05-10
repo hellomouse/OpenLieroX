@@ -17,7 +17,7 @@
 #ifndef __MENU_H__DEPRECATED_GUI__
 #define __MENU_H__DEPRECATED_GUI__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 
 #include "DeprecatedGUI/CWidgetList.h"

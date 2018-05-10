@@ -21,7 +21,7 @@
 #define __TIMER_H__
 
 #include <string>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <cassert>
 #include "Event.h"
 #include "types.h"

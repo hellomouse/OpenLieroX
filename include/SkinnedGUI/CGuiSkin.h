@@ -11,7 +11,7 @@
 #ifndef __CGUISKIN_H__SKINNED_GUI__
 #define __CGUISKIN_H__SKINNED_GUI__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include "InputEvents.h"
 

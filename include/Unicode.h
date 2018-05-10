@@ -11,16 +11,15 @@
 #ifndef __UNICODE_H__
 #define __UNICODE_H__
 
-#include <SDL.h> // for Uint32
 #include <string>
 
-typedef Uint32 UnicodeChar;
+typedef unsigned int UnicodeChar;
 typedef std::basic_string<UnicodeChar> UnicodeString;
 #ifdef WIN32
 typedef wchar_t Utf16Char;
 typedef std::wstring Utf16String;
 #else
-typedef Uint16 Utf16Char;
+typedef unsigned short int Utf16Char;
 typedef std::basic_string<Utf16Char> Utf16String;
 #endif
 

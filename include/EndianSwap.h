@@ -10,7 +10,7 @@
 #ifndef __ENDIANSWAP_H__
 #define __ENDIANSWAP_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <cstdio>
 #include <algorithm>
 #include "CVec.h"

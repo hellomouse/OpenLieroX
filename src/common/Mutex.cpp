@@ -7,7 +7,7 @@
 	code under LGPL
 */
 
-#include <SDL_thread.h>
+#include <SDL2/SDL_thread.h>
 
 #include "Mutex.h"
 #include "Debug.h"

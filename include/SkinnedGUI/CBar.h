@@ -25,7 +25,7 @@ typedef CProgressBar CBar;
 
 #if 0
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "MathLib.h"
 
 

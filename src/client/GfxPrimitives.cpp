@@ -22,7 +22,7 @@
 #ifndef DEDICATED_ONLY
 #include <gd.h>
 #endif
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <algorithm>
 
 #include "LieroX.h"

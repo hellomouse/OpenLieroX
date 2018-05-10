@@ -7,7 +7,7 @@
 #ifndef __READWRITELOCK_H__
 #define __READWRITELOCK_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "ThreadPool.h"
 #include "Debug.h"
 

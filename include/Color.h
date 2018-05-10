@@ -10,7 +10,7 @@
 #ifndef __COLOR_H__
 #define __COLOR_H__
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <cassert>
 
 #include "MathLib.h"

@@ -15,7 +15,7 @@
 #include <list>
 #include <cassert>
 #include "ThreadPool.h"
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 #include <time.h>
 
 #include "LieroX.h"
